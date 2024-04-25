@@ -7,11 +7,16 @@ interface Props {
 }
 
 const MyComponent: React.FC<Props> = (props) => {
+  const mainRef = React.useRef(null);
   const opacityRef = React.useRef(null);
   const handleScroll = () => {
-    const position = scrollY;
     if (opacityRef.current && (opacityRef.current as HTMLElement).style) {
-      (opacityRef.current as HTMLElement).style.opacity = `${position / 300}`;
+      (opacityRef.current as HTMLElement).style.opacity = `${1 - (scrollY / 300)}`;
+    }
+    if (mainRef.current && (mainRef.current as HTMLElement).style) {
+      console.log(scrollY, innerHeight);
+      console.log((mainRef.current as HTMLElement).style);
+      (mainRef.current as HTMLElement).style.paddingTop = `${scrollY + (innerHeight * 0.5)}px`
     }
   };
 
@@ -24,32 +29,34 @@ const MyComponent: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <div className=' z-10 text-black relative h-[85vh] flex flex-col pt-[50vh]'>
-      <div className=' absolute bg-white w-full h-[10vh] z-20 opacity-0' ref={opacityRef} >
-
-      </div>
-      <div className='flex space-x-1 text-sm text-center justify-center'>
-        <div className=' font-livvic font-semibold'>
-          Hi, welcome to
+    <div className='pt-[50vh] absolute w-full z-10 ' ref={mainRef}>
+      <div className=' text-black relative flex flex-col '>
+        <div className='opacity-100' ref={opacityRef} >
+          <div className='flex space-x-1 text-sm text-center justify-center'>
+            <div className=' font-livvic font-semibold'>
+              Hi, welcome to
+            </div>
+            <div className=' font-josefinSans font-bold'>
+              Avidity <span className=' font-normal'>Lab</span>
+            </div>
+            <div className=' font-livvic'>
+              [uh-vi-duh-tee læb]
+            </div>
+            <div className='mt-[3px]'>
+              <HiVolumeUp />
+            </div>
+          </div>
+          <div className=' font-livvic text-lg font-bold text-center mt-4'>
+            A Digital Product Agency
+          </div>
+          <div className=' font-livvic font-bold text-xl  flex space-x-1 justify-center'>
+            <div className=' text-black text-opacity-50'>that</div>
+            <AnimateTextMain />
+          </div>
         </div>
-        <div className=' font-josefinSans font-bold'>
-          Avidity <span className=' font-normal'>Lab</span>
-        </div>
-        <div className=' font-livvic'>
-          [uh-vi-duh-tee læb]
-        </div>
-        <div className='mt-[3px]'>
-          <HiVolumeUp />
-        </div>
-      </div>
-      <div className=' font-livvic text-lg font-bold text-center mt-4'>
-        A Digital Product Agency
-      </div>
-      <div className=' font-livvic font-bold text-xl  flex space-x-1 justify-center'>
-        <div className=' text-black text-opacity-50'>that</div>
-        <AnimateTextMain />
       </div>
     </div>
+
   );
 };
 

@@ -46,8 +46,8 @@ const VideoSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="video-section flex justify-center">
-      <div className='relative w-full h-[448px] rounded-xl overflow-hidden mx-20' ref={containerRef}>
+    <div className=" pt-[85vh] flex justify-center">
+      <div className='relative w-full h-[448px] rounded-xl overflow-hidden mx-20 z-20' ref={containerRef}>
         <div style={{
           position: "absolute",
           left: "50%"
