@@ -1,12 +1,17 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import { type HeadFC, type PageProps } from "gatsby"
 import Header from "../components/Header"
-
-
+import Background from "../components/Background"
+import MainSection from "../components/MainSection"
+import VideoSection from "../components/VideoSection"
 const IndexPage: React.FC<PageProps> = () => {
+
   return (
     <main>
+      <Background />
       <Header />
+      <MainSection />
+      <VideoSection />
     </main>
   )
 }
