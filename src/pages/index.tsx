@@ -4,6 +4,8 @@ import Header from "../components/Header"
 import Background from "../components/Background"
 import MainSection from "../components/MainSection"
 import VideoSection from "../components/VideoSection"
+import WhoWeAre from "../components/WhoWeAre"
+import WorkFlow from "../components/WorkFlow"
 const IndexPage: React.FC<PageProps> = () => {
 
   return (
@@ -12,6 +14,8 @@ const IndexPage: React.FC<PageProps> = () => {
       <Header />
       <MainSection />
       <VideoSection />
+      <WhoWeAre />
+      <WorkFlow />
     </main>
   )
 }

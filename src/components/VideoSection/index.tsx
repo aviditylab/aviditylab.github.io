@@ -4,6 +4,9 @@ const VideoSection: React.FC = () => {
 
   const containerRef = React.useRef(null);
   const videoRef = React.useRef(null);
+  useEffect(() => {
+    handleScroll()
+  }, [])
   const handleScroll = () => {
     if (containerRef.current && (containerRef.current as HTMLElement).style) {
       let marginCalc = 80
@@ -46,7 +49,7 @@ const VideoSection: React.FC = () => {
   }, []);
 
   return (
-    <div className=" pt-[85vh] flex justify-center">
+    <div className=" pt-[85vh] flex justify-center mb-40">
       <div className='relative w-full h-[448px] rounded-xl overflow-hidden mx-20 z-20' ref={containerRef}>
         <div style={{
           position: "absolute",
