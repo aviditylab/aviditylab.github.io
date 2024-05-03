@@ -9,6 +9,7 @@ module.exports = {
       fontFamily: {
         josefinSans: ["Josefin Sans", "ui-sans-serif", "system-ui"],
         livvic: ["Livvic", "ui-sans-serif", "system-ui"],
+        satoshi: ["Satoshi", "ui-sans-serif", "system-ui"],
       },
     },
   },
