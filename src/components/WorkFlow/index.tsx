@@ -1,7 +1,5 @@
 import React from 'react';
-import { TbPointFilled } from "react-icons/tb";
 import Card from './Card';
-import { title } from 'process';
 
 interface Props {
   // Define your component's props here

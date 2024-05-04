@@ -6,6 +6,7 @@ import MainSection from "../components/MainSection"
 import VideoSection from "../components/VideoSection"
 import WhoWeAre from "../components/WhoWeAre"
 import WorkFlow from "../components/WorkFlow"
+import Faq from "../components/Faq"
 const IndexPage: React.FC<PageProps> = () => {
 
   return (
@@ -16,6 +17,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <VideoSection />
       <WhoWeAre />
       <WorkFlow />
+      <Faq />
     </main>
   )
 }

@@ -14,8 +14,6 @@ const MyComponent: React.FC<Props> = (props) => {
       (opacityRef.current as HTMLElement).style.opacity = `${1 - (scrollY / 300)}`;
     }
     if (mainRef.current && (mainRef.current as HTMLElement).style) {
-      console.log(scrollY, innerHeight);
-      console.log((mainRef.current as HTMLElement).style);
       (mainRef.current as HTMLElement).style.paddingTop = `${scrollY + (innerHeight * 0.5)}px`
     }
   };
