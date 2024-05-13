@@ -18,8 +18,8 @@ const Faq: React.FC = () => {
   }]
 
   return (
-    <div>
-      <div>FAQ</div>
+    <div className="text-white bg-black rounded-t-3xl pt-10 px-4">
+      <div className=" text-6xl font-semibold mb-10">FAQ</div>
       {
         faqData.map((item, index) => (<FaqItem key={index} question={item.question} answer={item.answer} />))
       }
