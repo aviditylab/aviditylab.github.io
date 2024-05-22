@@ -6,6 +6,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        marquee: 'marquee 5s linear infinite',
+        marquee2: 'marquee2 5s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
       fontFamily: {
         josefinSans: ["Josefin Sans", "ui-sans-serif", "system-ui"],
         livvic: ["Livvic", "ui-sans-serif", "system-ui"],
