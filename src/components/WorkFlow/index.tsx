@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Card from './Card';
 import { FaCode, FaRocket, FaSeedling, FaTools } from 'react-icons/fa';
 import { MdDesignServices } from "react-icons/md";
 import { IconType } from 'react-icons';
-interface Props {
-  // Define your component's props here
-}
 
 interface WorkflowDataType {
   title: string;
   description: string;
   IconComponent: IconType;
 }
-const WorkFlow: React.FC<Props> = ({ }) => {
+const WorkFlow: React.FC = () => {
+  const cardRef = useRef(null);
+
+  const handleScroll = () => {
+    if (cardRef.current && (cardRef.current as HTMLElement).style) {
+      
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const workFlowData: WorkflowDataType[] = [{
     IconComponent: FaSeedling,
     title: 'Ideate',
@@ -35,10 +46,10 @@ const WorkFlow: React.FC<Props> = ({ }) => {
     description: "We continually refine and enhance your digital presence, ensuring it remains at the forefront of innovation."
   }]
   return (
-    <div className='flex flex-col my-40 items-start font-livvic mx-4'>
+    <div className='flex flex-col my-40 items-start font-livvic mx-4 overflow-hidden'>
       <div className='w-full text-lg font-bold text-center mb-10'>WORK FLOW</div>
       <div className='w-full text-sm font-semibold text-center'>Our process to make sure you got what you want</div>
-      <div className=' flex flex-col mt-20 space-y-24'>
+      <div className=' flex flex-col mt-20 space-y-24 md:space-y-0 md:flex-row' ref={cardRef}>
         {workFlowData.map((data, index) => <Card number={`0${index + 1}`} title={data.title} description={data.description} IconComponent={data.IconComponent} />)}
       </div>
     </div>

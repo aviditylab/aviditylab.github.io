@@ -20,6 +20,9 @@ const VideoSection: React.FC = () => {
       if (marginCalc < 10) {
         marginCalc = 10
       }
+      if(window.innerWidth >= 768){
+        marginCalc += 40;
+      }
       (containerRef.current as HTMLElement).style.marginLeft = `${marginCalc}px`;
       (containerRef.current as HTMLElement).style.marginRight = `${marginCalc}px`;
     }
@@ -49,12 +52,11 @@ const VideoSection: React.FC = () => {
   }, []);
 
   return (
-    <div className=" pt-[85vh] flex justify-center mb-40">
+    <div className=" pt-[85vh] md:pt-[100vh] flex justify-center mb-40">
       <div className='relative w-full h-[448px] rounded-xl overflow-hidden mx-20 z-20' ref={containerRef}>
         <div style={{
           position: "absolute",
           left: "50%"
-
         }}>
           <video autoPlay loop muted style={{
             "position": "relative",

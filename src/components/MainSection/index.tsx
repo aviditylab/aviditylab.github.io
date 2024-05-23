@@ -30,11 +30,11 @@ const MyComponent: React.FC<Props> = (props) => {
     <div className='pt-[50vh] absolute w-full z-10 ' ref={mainRef}>
       <div className=' text-black relative flex flex-col '>
         <div className='opacity-100' ref={opacityRef} >
-          <div className='flex space-x-1 text-sm text-center justify-center'>
+          <div className='flex space-x-1 text-sm md:text-xl text-center justify-center'>
             <div className=' font-livvic font-semibold'>
               Hi, welcome to
             </div>
-            <div className=' font-josefinSans font-bold'>
+            <div className=' font-josefinSans font-bold '>
               Avidity <span className=' font-normal'>Lab</span>
             </div>
             <div className=' font-livvic'>
@@ -44,10 +44,10 @@ const MyComponent: React.FC<Props> = (props) => {
               <HiVolumeUp />
             </div>
           </div>
-          <div className=' font-livvic text-lg font-bold text-center mt-4'>
+          <div className=' font-livvic text-lg font-bold text-center mt-4 md:text-3xl'>
             A Digital Product Agency
           </div>
-          <div className=' font-livvic font-bold text-xl  flex space-x-1 justify-center'>
+          <div className=' font-livvic font-bold text-2xl  flex space-x-1 justify-center'>
             <div className=' text-black text-opacity-50'>that</div>
             <AnimateTextMain />
           </div>

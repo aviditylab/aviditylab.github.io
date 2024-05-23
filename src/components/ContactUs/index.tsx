@@ -1,10 +1,8 @@
 import * as React from "react"
 import { FcIdea } from "react-icons/fc";
+import useHandleToWa from "../hooks/useHandleToWa";
 export default function() {
-
-    const toWa = () => {
-        window.open("https://wa.me/08116311788?text=ready%20to%20start")
-    }
+    const handleToWa = useHandleToWa();
     return <div className="h-screen bg-black">
         <div className="  h-4/5 relative font-livvic">
         <div className=" flex h-full w-full text-white text-4xl font-bold justify-center items-center space-x-2 font-sans">
@@ -13,25 +11,25 @@ export default function() {
             </div>
             <FcIdea />
         </div>
-        <div onClick={toWa} className=" absolute opacity-50 top-5 left-12">
+        <div onClick={handleToWa} className=" absolute opacity-50 top-5 left-12">
             <div className=" text-[#FFD7A3] rounded-full border border-[#FFD7A3] p-2">プロジェクトを開始する</div>
         </div>
-        <div onClick={toWa} className=" absolute opacity-50 top-20 right-5">
+        <div onClick={handleToWa} className=" absolute opacity-50 top-20 right-5">
             <div className=" text-[#FFA8A8] rounded-full border border-[#FFA8A8] p-2">Начать проект</div>
         </div>
-        <div onClick={toWa} className=" absolute opacity-50 top-40 left-36">
+        <div onClick={handleToWa} className=" absolute opacity-50 top-40 left-36">
             <div className=" text-[#E7FFAB] rounded-full border border-[#E7FFAB] p-2">Ein Projekt starten</div>
         </div>
-        <div onClick={toWa} className=" absolute opacity-50 top-60 left-24">
+        <div onClick={handleToWa} className=" absolute opacity-50 top-60 left-24">
             <div className=" text-white rounded-full border border-white p-2">开始项目</div>
         </div>
-        <div onClick={toWa} className=" absolute opacity-50 bottom-60 right-20">
+        <div onClick={handleToWa} className=" absolute opacity-50 bottom-60 right-20">
             <div className=" text-[#E7BBFC] rounded-full border border-[#E7BBFC] p-2">Mulai proyek</div>
         </div>
-        <div onClick={toWa} className=" absolute opacity-50 bottom-40 left-20">
+        <div onClick={handleToWa} className=" absolute opacity-50 bottom-40 left-20">
             <div className=" text-[#D1F7FF] rounded-full border border-[#D1F7FF] p-2">Démarrer un projet</div>
         </div>
-        <div onClick={toWa} className=" absolute bottom-5 left-1/2 transform -translate-x-1/2">
+        <div onClick={handleToWa} className=" absolute bottom-5 left-1/2 transform -translate-x-1/2">
             <div className=" text-white rounded-full border border-white p-2">Start a project</div>
         </div>
     </div>
