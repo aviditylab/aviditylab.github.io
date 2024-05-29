@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { StaticImage } from "gatsby-plugin-image"
 
 export default () => {

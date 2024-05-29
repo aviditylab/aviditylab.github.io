@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Card from './Card';
 import { FaCode, FaRocket, FaSeedling, FaTools } from 'react-icons/fa';
 import { MdDesignServices } from "react-icons/md";
@@ -10,20 +10,7 @@ interface WorkflowDataType {
   IconComponent: IconType;
 }
 const WorkFlow: React.FC = () => {
-  const cardRef = useRef(null);
 
-  const handleScroll = () => {
-    if (cardRef.current && (cardRef.current as HTMLElement).style) {
-      
-    }
-  }
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
   const workFlowData: WorkflowDataType[] = [{
     IconComponent: FaSeedling,
     title: 'Ideate',
@@ -46,11 +33,15 @@ const WorkFlow: React.FC = () => {
     description: "We continually refine and enhance your digital presence, ensuring it remains at the forefront of innovation."
   }]
   return (
-    <div className='flex flex-col my-40 items-start font-livvic mx-4 overflow-hidden'>
-      <div className='w-full text-lg font-bold text-center mb-10'>WORK FLOW</div>
-      <div className='w-full text-sm font-semibold text-center'>Our process to make sure you got what you want</div>
-      <div className=' flex flex-col mt-20 space-y-24 md:space-y-0 md:flex-row' ref={cardRef}>
-        {workFlowData.map((data, index) => <Card number={`0${index + 1}`} title={data.title} description={data.description} IconComponent={data.IconComponent} />)}
+    <div className='my-40 md:my-0 md:h-screen items-start font-livvic mx-4 md:mx-0 relative snap-start' >
+      <div className='w-full text-lg md:text-3xl font-bold text-center mb-10'>WORK FLOW</div>
+      <div className='w-full text-sm md:text-2xl font-semibold text-center'>Our process to make sure you got what you want</div>
+      <div className=' md:h-screen md:w-screen md:absolute top-0'>
+        <div className='
+          md:workFlow md:space-y-0 md:mt-0
+          flex flex-col mt-20 space-y-24'>
+          {workFlowData.map((data, index) => <Card number={`0${index + 1}`} title={data.title} description={data.description} IconComponent={data.IconComponent} />)}
+        </div>
       </div>
     </div>
   );

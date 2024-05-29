@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .workFlow {
+    display: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    padding: 0;
+    display: block;
+    padding-top: 400px;
+    padding-bottom: 400px;
+    width: 100vh;
+    height: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform-origin: right top;
+    transform: rotate(-90deg) translateY(-100vh);
+  }
+  .horizontal-scroll-wrapper {
+    padding-top: 100px;
+    width: 100px;
+    height: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: rotate(-90deg);
+    transform-origin: right top;
+    transform: rotate(-90deg) translateY(-100px);
+  }
+
+  .horizontal-scroll-wrapper > div {
+    width: 100px;
+    height: 100px;
+    transform: rotate(90deg);
+    transform-origin: right top;
+  }
+}

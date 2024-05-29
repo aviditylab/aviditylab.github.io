@@ -8,19 +8,30 @@ import WhoWeAre from "../components/WhoWeAre"
 import WorkFlow from "../components/WorkFlow"
 import Faq from "../components/Faq"
 import ContactUs from "../components/ContactUs"
+
 const IndexPage: React.FC<PageProps> = () => {
 
   return (
-    <main>
-      <Background />
-      <Header />
-      <MainSection />
-      <VideoSection />
-      <WhoWeAre />
-      <WorkFlow />
-      <Faq />
-      <ContactUs />
-    </main>
+    <div className="snap-mandatory snap-y">
+      <div className=" snap-start">
+        <Background />
+        <Header />
+        <MainSection />
+        <VideoSection />
+      </div>
+      <div className=" snap-start">
+        <WhoWeAre />
+      </div>
+      <div className=" snap-start">
+        <WorkFlow />
+      </div>
+      <div className=" snap-start">
+        <Faq />
+      </div>
+      <div className=" snap-start">
+        <ContactUs />
+      </div>
+    </div>
   )
 }
 
