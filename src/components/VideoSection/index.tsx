@@ -13,7 +13,7 @@ const VideoSection: React.FC = () => {
     let variableNumberMargin = 1
     let variableNumberContainer = 1
     if (window.innerWidth >= 768) {
-      variableNumberMargin = 1
+      variableNumberMargin = 2
       variableNumberContainer = 1.8
       maxContainerHeight = maxContainerHeight * variableNumberContainer;
       maxVideoHeight = maxVideoHeight * variableNumberContainer;
@@ -42,7 +42,7 @@ const VideoSection: React.FC = () => {
     if (videoRef.current && (videoRef.current as HTMLElement).style) {
       let heightCalc = maxVideoHeight
       if (scrollY > 0) {
-        let calc = scrollY / 313 * 100 * 1.9;
+        let calc = scrollY * 1.9 + 200;
         let calc2 = maxVideoHeight + calc;
         if (calc2 >= maxContainerHeight) {
           heightCalc = maxContainerHeight;
