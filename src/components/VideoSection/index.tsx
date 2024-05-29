@@ -13,10 +13,8 @@ const VideoSection: React.FC = () => {
     let variableNumberMargin = 1
     let variableNumberContainer = 1
     if (window.innerWidth >= 768) {
-      variableNumberMargin = 2
-      variableNumberContainer = 1.4
-    }
-    if (window.innerWidth >= 768) {
+      variableNumberMargin = 1
+      variableNumberContainer = 1.8
       maxContainerHeight = maxContainerHeight * variableNumberContainer;
       maxVideoHeight = maxVideoHeight * variableNumberContainer;
     }
@@ -34,7 +32,7 @@ const VideoSection: React.FC = () => {
         marginCalc = 10
       }
       if (window.innerWidth >= 768) {
-        marginCalc += 340;
+        marginCalc += 100;
       }
       (containerRef.current as HTMLElement).style.marginLeft = `${marginCalc}px`;
       (containerRef.current as HTMLElement).style.marginRight = `${marginCalc}px`;
