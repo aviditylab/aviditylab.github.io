@@ -1,10 +1,10 @@
 import * as React from "react"
 
-export default function() {
+export default function () {
 
-    const handleToWa = () => {
-        window.open("https://wa.me/08116311788?text=ready%20to%20start")
-    }
-    
-    return handleToWa
+  const handleToWa = () => {
+    window.open("https://wa.me/+6282273198501?text=ready%20to%20start")
+  }
+
+  return handleToWa
 }

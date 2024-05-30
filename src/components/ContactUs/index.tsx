@@ -20,7 +20,6 @@ export default function () {
           <FaArrowRight size={16} />
         </div>
       </div>
-
       <div onClick={handleToWa} className="group flex justify-end items-center cursor-pointer absolute opacity-50 hover:opacity-100 top-20 right-10 lg:top-32 lg:right-64">
         <div className="translate-x-6 group-hover:-translate-x-0 transition-all text-[#FFA8A8] group-hover:text-black group-hover:bg-[#FFA8A8] rounded-full border border-[#FFA8A8] p-2 lg:p-4 lg:text-lg">Начать проект</div>
         <div className=" bg-[#FFA8A8] rounded-full w-10 h-10 lg:w-16 lg:h-16 group-hover:flex justify-center items-center hidden">
