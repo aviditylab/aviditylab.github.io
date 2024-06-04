@@ -34,6 +34,9 @@ const VideoSection: React.FC = () => {
       if (window.innerWidth >= 768) {
         marginCalc += 100;
       }
+      if (window.innerWidth >= 1670) {
+        marginCalc += 50;
+      }
       (containerRef.current as HTMLElement).style.marginLeft = `${marginCalc}px`;
       (containerRef.current as HTMLElement).style.marginRight = `${marginCalc}px`;
       (containerRef.current as HTMLElement).style.height = `${maxContainerHeight}px`;

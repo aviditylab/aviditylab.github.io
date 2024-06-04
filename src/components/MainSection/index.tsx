@@ -2,9 +2,11 @@ import { useScroll } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { HiVolumeUp } from "react-icons/hi";
 import Typed from 'typed.js';
-
+import useSound from 'use-sound';
+import aviditylabSound from './aviditylab.mp3';
 
 const MyComponent: React.FC = () => {
+  const [play] = useSound(aviditylabSound);
   const mainRef = React.useRef(null);
 
   const opacityRef = React.useRef(null);
@@ -39,17 +41,18 @@ const MyComponent: React.FC = () => {
               <div className=' font-josefinSans font-bold '>
                 Avidity <span className=' font-normal'>Lab</span>
               </div>
-              <div className=' font-livvic'>
+              <div className=' font-livvic cursor-pointer' onClick={() => play()}>
                 [uh-vi-duh-tee læb]
               </div>
-              <div className='mt-[3px]'>
+              <div className='mt-[3px] cursor-pointer' onClick={() => play()}>
                 <HiVolumeUp />
+                <audio src='' />
               </div>
             </div>
             <div className=' font-livvic text-lg font-bold text-center mt-4 md:text-3xl'>
               A Digital Product Agency
             </div>
-            <div className=' font-livvic font-bold text-2xl  flex space-x-1 justify-center'>
+            <div className=' font-livvic font-bold text-xl md:text-2xl  flex space-x-1 justify-center'>
               <div className=' text-black text-opacity-50'>that</div>
               <AnimateTextMain />
             </div>

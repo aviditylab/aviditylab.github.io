@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Card from './Card';
 import { FaCode, FaRocket, FaSeedling, FaTools } from 'react-icons/fa';
 import { MdDesignServices } from "react-icons/md";
@@ -32,14 +32,27 @@ const WorkFlow: React.FC = () => {
     title: "Optimize",
     description: "We continually refine and enhance your digital presence, ensuring it remains at the forefront of innovation."
   }]
+  const workFlowRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (workFlowRef?.current) {
+      let workflowWidth = (workFlowRef?.current?.clientWidth);
+      if (workflowWidth == 900)
+        workFlowRef.current.style.transform = `rotate(-90deg) translateY(-900px)`
+      else
+        workFlowRef.current.style.transform = ''
+
+      console.log(workFlowRef.current.style.transform)
+    }
+  }, [workFlowRef, workFlowRef?.current])
   return (
-    <div className='my-40 md:my-0 md:h-screen items-start font-livvic mx-4 md:mx-0 relative snap-start' >
+    <div className='my-40 md:my-0 md:h-screen md:min-h-[700px] items-start font-livvic mx-4 md:mx-0 relative snap-start' >
       <div className='w-full text-lg md:text-3xl font-bold text-center mb-10'>WORK FLOW</div>
       <div className='w-full text-sm md:text-2xl font-semibold text-center'>Our process to make sure you got what you want</div>
-      <div className=' md:h-screen md:w-screen md:absolute top-0'>
+      <div className=' md:min-h-[900px] md:h-screen md:w-screen md:absolute top-0'>
         <div className='
           md:workFlow md:space-y-0 md:mt-0
-          flex flex-col mt-20 space-y-24'>
+          flex flex-col mt-20 space-y-24' ref={workFlowRef}>
           {workFlowData.map((data, index) => <Card number={`0${index + 1}`} title={data.title} description={data.description} IconComponent={data.IconComponent} />)}
         </div>
       </div>

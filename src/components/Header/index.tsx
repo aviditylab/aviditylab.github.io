@@ -4,7 +4,11 @@ import { IoMdClose } from "react-icons/io";
 import ListMenu from "./ListMenu";
 import useHandleToWa from "../hooks/useHandleToWa";
 
-const Header: React.FC = () => {
+interface HeaderPropsType {
+  onHandleScroll: (index: number) => void
+}
+
+const Header: React.FC<HeaderPropsType> = ({ onHandleScroll }) => {
 
   const [showMenu, setShowMenu] = React.useState(false);
   const handleClickMenu = () => {
@@ -20,9 +24,9 @@ const Header: React.FC = () => {
             Avidity
           </div>
           <div className="md:flex hidden w-full justify-center text-sm font-semibold space-x-10 ">
-            <div className=" hover:underline transition-all duration-1000 cursor-pointer">About</div>
-            <div className=" hover:underline transition-all duration-1000 cursor-pointer">Process</div>
-            <div className=" hover:underline transition-all duration-1000 cursor-pointer">FAQ</div>
+            <div className=" hover:underline transition-all duration-1000 cursor-pointer" onClick={() => { onHandleScroll(0) }} >About</div>
+            <div className=" hover:underline transition-all duration-1000 cursor-pointer" onClick={() => { onHandleScroll(1) }} >Process</div>
+            <div className=" hover:underline transition-all duration-1000 cursor-pointer" onClick={() => { onHandleScroll(2) }} >FAQ</div>
           </div>
           <div onClick={handleToWa} className="md:flex hidden md:mr-8 justify-center text-nowrap text-sm font-bold bg-black text-white rounded-full py-1 px-4 items-center cursor-pointer">
             Start a project

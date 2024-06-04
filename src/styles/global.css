@@ -12,6 +12,7 @@
     padding-top: 400px;
     padding-bottom: 400px;
     width: 100vh;
+    min-width: 900px;
     height: 100vw;
     overflow-y: auto;
     overflow-x: hidden;

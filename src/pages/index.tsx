@@ -11,21 +11,35 @@ import ContactUs from "../components/ContactUs"
 
 const IndexPage: React.FC<PageProps> = () => {
 
+  const whoWeAreRef = React.useRef<HTMLDivElement>(null);
+  const workFlowRef = React.useRef<HTMLDivElement>(null);
+  const faqRef = React.useRef<HTMLDivElement>(null);
+
+  const handleScroll = (index: number) => {
+    const refs = [whoWeAreRef, workFlowRef, faqRef];
+    if (refs[index] != null) {
+      const ref = refs[index].current;
+      if (ref) {
+        ref.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }
+
   return (
     <div className="snap-mandatory snap-y">
       <div className=" snap-start">
         <Background />
-        <Header />
+        <Header onHandleScroll={handleScroll}/>
         <MainSection />
         <VideoSection />
       </div>
-      <div className=" snap-start">
+      <div className=" snap-start" ref={whoWeAreRef}>
         <WhoWeAre />
       </div>
-      <div className=" snap-start">
+      <div className=" snap-start" ref={workFlowRef}>
         <WorkFlow />
       </div>
-      <div className=" snap-start">
+      <div className=" snap-start" ref={faqRef}>
         <Faq />
       </div>
       <div className=" snap-start">
