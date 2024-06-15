@@ -15,7 +15,7 @@ const ListMenu: React.FC<{ show: boolean }> = ({ show }) => {
               {item}
             </div>
           ))}
-          <div className='m-4 p-2 bg-black cursor-pointer text-white rounded-full text-center font-livvic font-semibold text-sm'>
+          <div className='m-4 p-2 bg-black cursor-pointer text-white rounded-full text-center font-livvic font-semibold text-sm items-center'>
             Start a project
           </div>
         </div>

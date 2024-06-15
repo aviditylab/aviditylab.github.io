@@ -1,4 +1,5 @@
 import type { GatsbyConfig } from "gatsby";
+import "dotenv/config.js";
 
 const config: GatsbyConfig = {
   pathPrefix: "/",
@@ -52,6 +53,15 @@ const config: GatsbyConfig = {
       },
       __key: "pages",
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `alkifc2va945`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    `gatsby-plugin-image`,
   ],
 };
 

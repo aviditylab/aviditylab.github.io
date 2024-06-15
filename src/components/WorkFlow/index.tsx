@@ -41,8 +41,6 @@ const WorkFlow: React.FC = () => {
         workFlowRef.current.style.transform = `rotate(-90deg) translateY(-900px)`
       else
         workFlowRef.current.style.transform = ''
-
-      console.log(workFlowRef.current.style.transform)
     }
   }, [workFlowRef, workFlowRef?.current])
   return (

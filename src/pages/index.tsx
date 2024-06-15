@@ -1,5 +1,5 @@
 import * as React from "react"
-import { type HeadFC, type PageProps } from "gatsby"
+import { useStaticQuery, type HeadFC, type PageProps } from "gatsby"
 import Header from "../components/Header"
 import Background from "../components/Background"
 import MainSection from "../components/MainSection"
@@ -8,8 +8,13 @@ import WhoWeAre from "../components/WhoWeAre"
 import WorkFlow from "../components/WorkFlow"
 import Faq from "../components/Faq"
 import ContactUs from "../components/ContactUs"
+import { graphql } from 'gatsby'
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC<PageProps> = ({ data }) => {
+
+  React.useEffect(() => {
+    console.log(data);
+  }, [data])
 
   const whoWeAreRef = React.useRef<HTMLDivElement>(null);
   const workFlowRef = React.useRef<HTMLDivElement>(null);
@@ -29,7 +34,7 @@ const IndexPage: React.FC<PageProps> = () => {
     <div className="snap-mandatory snap-y">
       <div className=" snap-start">
         <Background />
-        <Header onHandleScroll={handleScroll}/>
+        <Header onHandleScroll={handleScroll} />
         <MainSection />
         <VideoSection />
       </div>
