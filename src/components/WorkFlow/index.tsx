@@ -3,6 +3,10 @@ import Card from './Card';
 import { FaCode, FaRocket, FaSeedling, FaTools } from 'react-icons/fa';
 import { MdDesignServices } from "react-icons/md";
 import { IconType } from 'react-icons';
+import { desktopUtilityGsap, mobileUtilityGsap } from './gsapUtil';
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
 
 interface WorkflowDataType {
   title: string;
@@ -10,6 +14,7 @@ interface WorkflowDataType {
   IconComponent: IconType;
 }
 const WorkFlow: React.FC = () => {
+  gsap.registerPlugin(ScrollTrigger);
 
   const workFlowData: WorkflowDataType[] = [{
     IconComponent: FaSeedling,
@@ -33,25 +38,39 @@ const WorkFlow: React.FC = () => {
     description: "We continually refine and enhance your digital presence, ensuring it remains at the forefront of innovation."
   }]
   const workFlowRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
 
-  useEffect(() => {
-    if (workFlowRef?.current) {
-      let workflowWidth = (workFlowRef?.current?.clientWidth);
-      if (workflowWidth == 900)
-        workFlowRef.current.style.transform = `rotate(-90deg) translateY(-900px)`
-      else
-        workFlowRef.current.style.transform = ''
-    }
-  }, [workFlowRef, workFlowRef?.current])
+      let panels = gsap.utils.toArray(".panel");
+      if (window.innerWidth < 640) return;
+      if (panels.length < workFlowData.length) return;
+      console.log(containerRef.current?.offsetWidth);
+      return gsap.to(panels, {
+        xPercent: -100 * (panels.length),
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          invalidateOnRefresh: true,
+          pin: true,
+          scrub: 1,
+          end: () => "+=" + ((containerRef.current?.offsetWidth || 0) * 1),
+        }
+      });
+    },
+    { scope: containerRef, dependencies: [workFlowRef.current, workFlowRef.current?.children] }
+  );
+
+
   return (
-    <div className='my-40 md:my-0 md:h-screen md:min-h-[700px] items-start font-livvic mx-4 md:mx-0 relative snap-start' >
+    <div className='my-40 md:my-0 relative md:h-screen md:overflow-hidden items-start font-livvic mx-4 md:mx-0 snap-start' ref={containerRef}>
       <div className='w-full text-lg md:text-3xl font-bold text-center mb-10'>WORK FLOW</div>
       <div className='w-full text-sm md:text-2xl font-semibold text-center'>Our process to make sure you got what you want</div>
-      <div className=' md:min-h-[900px] md:h-screen md:w-screen md:absolute top-0'>
-        <div className='
-          md:workFlow md:space-y-0 md:mt-0
-          flex flex-col mt-20 space-y-24' ref={workFlowRef}>
-          {workFlowData.map((data, index) => <Card number={`0${index + 1}`} title={data.title} description={data.description} IconComponent={data.IconComponent} />)}
+      <div className=' md:min-h-[900px] md:absolute top-0'>
+        <div className=' 
+          md:space-y-0 md:mt-60
+          flex flex-col md:flex-row md:space-x-40 mt-20 space-y-24 md:mx-80' ref={workFlowRef}>
+          {workFlowData.map((data, index) => (<div className='panel' key={index}><Card number={`0${index + 1}`} title={data.title} description={data.description} IconComponent={data.IconComponent} /></div>))}
         </div>
       </div>
     </div>

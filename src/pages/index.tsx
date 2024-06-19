@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useStaticQuery, type HeadFC, type PageProps } from "gatsby"
+import { type HeadFC, type PageProps } from "gatsby"
 import Header from "../components/Header"
 import Background from "../components/Background"
 import MainSection from "../components/MainSection"
@@ -8,13 +8,8 @@ import WhoWeAre from "../components/WhoWeAre"
 import WorkFlow from "../components/WorkFlow"
 import Faq from "../components/Faq"
 import ContactUs from "../components/ContactUs"
-import { graphql } from 'gatsby'
 
-const IndexPage: React.FC<PageProps> = ({ data }) => {
-
-  React.useEffect(() => {
-    console.log(data);
-  }, [data])
+const IndexPage: React.FC<PageProps> = () => {
 
   const whoWeAreRef = React.useRef<HTMLDivElement>(null);
   const workFlowRef = React.useRef<HTMLDivElement>(null);

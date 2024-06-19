@@ -14,17 +14,17 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answers }) => {
         {question}
       </div>
       <div>
-        {!show ? 
-        <FaPlus/>
-        :
-        <FaMinus/>
+        {!show ?
+          <FaPlus />
+          :
+          <FaMinus />
         }
-        
+
       </div>
     </div>
-      <div className={` flex flex-col space-y-4 transition duration-150 ease-out hover:ease-in font-satoshi text-xs text-gray-500 overflow-hidden ${!show ? "h-0" : ""}`}>
-        {answers.map(ans => (<div>{ans}</div>))}
-      </div>
+    <div className={` flex flex-col space-y-4 transition duration-150 ease-out hover:ease-in font-satoshi text-xs text-gray-500 overflow-hidden ${!show ? "h-0" : ""}`}>
+      {answers.map((ans, index) => (<div key={index}>{ans}</div>))}
+    </div>
   </div>)
 }
 
