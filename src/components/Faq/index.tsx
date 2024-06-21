@@ -6,7 +6,7 @@ const Faq: React.FC = () => {
   const faqData = [{
     question: "What separates Avidity from other software house or digital agencies?",
     answers: [
-      "At Avidity, we're dedicated to your success. With our experienced team, including hands-on cofounders and seasoned project directors, we ensure meticulous attention to detail and comprehensive design reviews. Transparency and open communication are key, guaranteeing a superior experience from start to finish.", 
+      "At Avidity, we're dedicated to your success. With our experienced team, including hands-on cofounders and seasoned project directors, we ensure meticulous attention to detail and comprehensive design reviews. Transparency and open communication are key, guaranteeing a superior experience from start to finish.",
       "What sets us apart is our holistic approach, seamlessly integrating development expertise with branding and user experience. Our multidisciplinary teams ensure your software not only meets functional requirements but also reflects your brand identity and delivers an unparalleled user experience.",
       "We specialize in crafting scalable solutions aligned with your long-term business objectives, demonstrating our commitment to future-proofing your digital assets."
     ]
@@ -32,7 +32,7 @@ const Faq: React.FC = () => {
   }]
 
   return (
-    <div className="text-white bg-black rounded-t-[3rem] pt-10 px-4 z-20">
+    <div className="text-white bg-black rounded-t-[3rem] pt-10 px-4 z-20 md:pt-20 md:px-14">
       <div className=" text-6xl font-semibold mb-10">FAQ</div>
       {
         faqData.map((item, index) => (<FaqItem key={index} question={item.question} answers={item.answers} />))

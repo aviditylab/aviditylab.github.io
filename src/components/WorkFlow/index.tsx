@@ -3,7 +3,6 @@ import Card from './Card';
 import { FaCode, FaRocket, FaSeedling, FaTools } from 'react-icons/fa';
 import { MdDesignServices } from "react-icons/md";
 import { IconType } from 'react-icons';
-import { desktopUtilityGsap, mobileUtilityGsap } from './gsapUtil';
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
@@ -41,38 +40,41 @@ const WorkFlow: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   useGSAP(
     () => {
-
-      let panels = gsap.utils.toArray(".panel");
       if (window.innerWidth < 640) return;
+      if (!containerRef || !containerRef.current) return;
+      if (!workFlowRef || !workFlowRef.current) return;
+      let panels = gsap.utils.toArray(".panel");
       if (panels.length < workFlowData.length) return;
-      console.log(containerRef.current?.offsetWidth);
       return gsap.to(panels, {
-        xPercent: -100 * (panels.length),
+        xPercent: -100 * (panels.length - 1),
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
           invalidateOnRefresh: true,
           pin: true,
           scrub: 1,
-          end: () => "+=" + ((containerRef.current?.offsetWidth || 0) * 1),
+          end: () => "+=" + (containerRef.current?.offsetWidth || 0),
         }
       });
     },
     { scope: containerRef, dependencies: [workFlowRef.current, workFlowRef.current?.children] }
   );
-
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, [window.innerWidth, window.innerHeight])
 
   return (
-    <div className='my-40 md:my-0 relative md:h-screen md:overflow-hidden items-start font-livvic mx-4 md:mx-0 snap-start' ref={containerRef}>
+    <div className='my-40 md:my-0 md:h-screen flex justify-center font-livvic mx-4 md:mx-0 snap-start flex-col' ref={containerRef}>
       <div className='w-full text-lg md:text-3xl font-bold text-center mb-10'>WORK FLOW</div>
       <div className='w-full text-sm md:text-2xl font-semibold text-center'>Our process to make sure you got what you want</div>
-      <div className=' md:min-h-[900px] md:absolute top-0'>
-        <div className=' 
-          md:space-y-0 md:mt-60
-          flex flex-col md:flex-row md:space-x-40 mt-20 space-y-24 md:mx-80' ref={workFlowRef}>
-          {workFlowData.map((data, index) => (<div className='panel' key={index}><Card number={`0${index + 1}`} title={data.title} description={data.description} IconComponent={data.IconComponent} /></div>))}
-        </div>
+
+      <div className='
+        md:space-y-0
+        flex flex-col md:flex-row mt-20 space-y-24 md:space-x-40 md:mx-80' ref={workFlowRef}>
+        {workFlowData.map((data, index) => (<div className='panel' key={index}><Card number={`${index + 1}`} title={data.title} description={data.description} IconComponent={data.IconComponent} /></div>))}
       </div>
+
+
     </div>
   );
 };
