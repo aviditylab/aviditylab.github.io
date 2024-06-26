@@ -15,7 +15,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "deploy": "gatsby build && cp ./src/CNAME public/ && gh-pages -f -d public",
+    "deploy": "gatsby build && gh-pages -f -d public",
     "deploy-win": "gatsby build & copy ./src/CNAME public/ & gh-pages -f -d public"
   },
   "dependencies": {
