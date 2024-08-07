@@ -8,6 +8,7 @@ import WhoWeAre from "../components/WhoWeAre"
 import WorkFlow from "../components/WorkFlow"
 import Faq from "../components/Faq"
 import ContactUs from "../components/ContactUs"
+import Hero from "../components/Hero"
 
 const IndexPage: React.FC<PageProps> = () => {
 
@@ -26,12 +27,9 @@ const IndexPage: React.FC<PageProps> = () => {
   }
 
   return (
-    <div className="snap-mandatory snap-y">
+    <div className="snap-mandatory snap-y bg-[#F8F9FA]">
       <div className=" snap-start">
-        <Background />
-        <Header onHandleScroll={handleScroll} />
-        <MainSection />
-        <VideoSection />
+        <Hero />
       </div>
       <div className=" snap-start" ref={whoWeAreRef}>
         <WhoWeAre />
