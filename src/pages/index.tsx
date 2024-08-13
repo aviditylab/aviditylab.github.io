@@ -9,6 +9,7 @@ import WorkFlow from "../components/WorkFlow"
 import Faq from "../components/Faq"
 import ContactUs from "../components/ContactUs"
 import Hero from "../components/Hero"
+import Value from "../components/Value"
 
 const IndexPage: React.FC<PageProps> = () => {
 
@@ -26,6 +27,13 @@ const IndexPage: React.FC<PageProps> = () => {
     }
   }
 
+  React.useEffect(() => {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [])
   return (
     <div className="snap-mandatory snap-y bg-[#F8F9FA]">
       <div className=" snap-start">
@@ -35,7 +43,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <WhoWeAre />
       </div>
       <div className=" snap-start" ref={workFlowRef}>
-        <WorkFlow />
+        <Value />
       </div>
       <div className=" snap-start" ref={faqRef}>
         <Faq />

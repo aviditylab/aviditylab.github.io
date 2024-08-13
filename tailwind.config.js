@@ -4,12 +4,13 @@ module.exports = {
     `./src/pages/**/*.{js,jsx,ts,tsx}`,
     `./src/components/**/*.{js,jsx,ts,tsx}`,
   ],
+  darkMode: "selector",
   theme: {
-    colors: {
-      light: "#F8F9FA",
-      dark: "#1E1E1E",
-    },
     extend: {
+      colors: {
+        light: "#F8F9FA",
+        dark: "#1E1E1E",
+      },
       animation: {
         marquee: "marquee 5s linear infinite",
         marquee2: "marquee2 5s linear infinite",

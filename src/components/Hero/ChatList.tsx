@@ -35,7 +35,7 @@ const ColorPicker = () => {
 
 export default function () {
   const colorContext = React.useContext(BgContext)
-
+  const heroTheme = React.useContext(HeroThemeContext)
   const chatData = [
     {
       message: "Can we change the color?",
@@ -53,7 +53,7 @@ export default function () {
       logo: HiUser,
     },
     {
-      message: "We've got you covered and adding dark mode as well",
+      message: `We've got you covered and adding ${heroTheme.heroTheme} mode as well`,
       logo: AvidityLabLogo,
       additional: ThemePicker,
     },
@@ -67,7 +67,7 @@ export default function () {
               <item.logo />
             </div>
             <div className=" flex justify-center items-center space-x-1">
-              <div className=" bg-[#E9ECEF] px-2 py-1 rounded-t-xl rounded-r-xl">{item.message}</div>
+              <div className=" bg-[#E9ECEF] dark:bg-[#343A40] px-2 py-1 rounded-t-xl rounded-r-xl">{item.message}</div>
               {item.additional && <item.additional />}
             </div>
           </div>

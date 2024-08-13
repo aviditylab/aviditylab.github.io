@@ -66,7 +66,6 @@ const WorkFlow: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   useGSAP(
     () => {
-      if (window.innerWidth < 640) return;
       if (!containerRef || !containerRef.current) return;
       if (!workFlowRef || !workFlowRef.current) return;
       let panels = gsap.utils.toArray(".panel");
