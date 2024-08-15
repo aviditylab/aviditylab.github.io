@@ -46,8 +46,8 @@ const ValueImageItem = ({ image }: any) => {
 }
 const ValueDescriptionItem = ({ title, description }: any) => {
   return (
-    <div className='w-[100vw] relative dark:bg-dark panel'>
-      <div className='text-center flex flex-col space-y-4 pt-4 relative z-0'>
+    <div className=' h-[156px] w-[100vw] relative dark:bg-dark panel'>
+      <div className='text-center flex flex-col space-y-1 pt-2 relative h-[156px]'>
         <div className=' text-xl font-semibold'>{title}</div>
         <div >{description}</div>
       </div>
@@ -102,25 +102,23 @@ export default function () {
       if (!containerRef || !containerRef.current) return;
       if (!valueDescriptionItemRef || !valueDescriptionItemRef.current) return;
       let panels = gsap.utils.toArray(".panel");
-      console.log(panels);
       if (panels.length < valueItems.length) return;
-      return gsap.to(panels, {
-        yPercent: -100 * (panels.length - 1),
-        ease: "none",
-        scrollTrigger: {
-          start: 'top top',
-          trigger: containerRef.current,
-          invalidateOnRefresh: true,
-          pin: true,
-          scrub: 1,
-          snap: {
-            snapTo: 'labels',
-          },
-          end: () => {
-            console.log(valueDescriptionItemRef.current?.offsetHeight)
-            return "+=" + (valueDescriptionItemRef.current?.offsetHeight || 0)
-          },
-        }
+      gsap.to(panels, {
+        y: -(valueDescriptionHeight * (panels.length - 1)),
+        // scrollTrigger: {
+        //   start: 'top top',
+        //   trigger: containerRef.current,
+        //   invalidateOnRefresh: true,
+        //   pin: true,
+        //   scrub: 1,
+        //   snap: {
+        //     snapTo: 1 / (panels.length),
+        //     duration: 0.5
+        //   },
+        //   end: () => {
+        //     return "+=" + (valueDescriptionItemRef.current?.offsetHeight || 0)
+        //   },
+        // }
       });
     },
     {
