@@ -83,122 +83,47 @@ export default function () {
   useGSAP(
     () => {
       let containerPanels = gsap.utils.toArray('.container-panel');
-      console.log(containerPanels);
+      let tl = gsap.timeline()
       containerPanels.forEach((panel: any, i) => {
-        gsap.to(panel, {
-          start: () => "top top",
-          end: () => "+=" + (panel.offsetHeight || 0),
-          scrollTo: { y: panel, autoKill: false },
-          duration: 3,
-          scrollTrigger: {
-            markers: true,
-            trigger: panel,
-            start: "top bottom-=1",
-            end: "bottom top+=1",
-            scrub: true,
-            invalidateOnRefresh: true,
-            onEnter: () => {
-              console.log('enter');
-            },
+        // gsap.to(panel, {
+        //   start: () => "top top",
+        //   end: () => "+=" + (panel.offsetHeight || 0),
+        //   scrollTo: { y: panel, autoKill: false },
+        //   duration: 3,
+        //   scrollTrigger: {
+        //     markers: true,
+        //     trigger: panel,
+        //     start: "top bottom-=1",
+        //     end: "bottom top+=1",
+        //     scrub: true,
+        //     onEnter: () => {
+        //       console.log('enter');
+        //     },
+        //     invalidateOnRefresh: true,
+        //   }
+        // })
+        ScrollTrigger.create({
+          trigger: panel,
+          start: "bottom 90%",
+          end: "bottom 10%",
+          toggleActions: "restart none none reverse",
+          markers: true,
+          onEnterBack: (self) => {
+            tl.to(window, {
+              scrollTo: `#container-panel-${i}`,
+              duration: 1
+            })
+          },
+          onEnter: (self) => {
+            if(containerPanels.length === i+1) return;
+            tl.to(window, {
+              scrollTo: `#container-panel-${i+1}`,
+              duration: 1
+            })
           }
-        })
+        });
+        
       })
-      //   ScrollTrigger.create({
-      //     markers: true,
-      //     trigger: panel,
-      //     start: () => "top top",
-      //     end: () => "+=" + (panel.offsetHeight || 0),
-      //     scrub: true,
-      //     invalidateOnRefresh: true,
-      //     onEnter: () => {
-      //       console.log('enter');
-      //       gsap.to(panel, {
-      //         scrollTo: { y: "300", autoKill: false },
-      //         duration: 1
-      //       })
-      //     },
-      //     onUpdate: (self) => {
-      //       console.log(
-      //         'progress:',
-      //         self.progress.toFixed(3),
-      //         'direction:',
-      //         self.direction,
-      //         'velocity',
-      //         self.getVelocity()
-      //       );
-      //     }
-      //   })
-      // })
-
-      // if (!valueDescriptionItemRef || !valueDescriptionItemRef.current) return;
-      // let panels = gsap.utils.toArray(".panel");
-      // if (panels.length < valueItems.length) return;
-
-      // panels.forEach((panel: any, i) => {
-      //   var nextImage = panel.nextElementSibling;
-
-      //   var imageTimeline = gsap.timeline({
-      //     scrollTrigger: {
-      //       trigger: containerRef.current,
-      //       scroller: containerRef.current,
-
-      //       start: () => "top top",
-      //       end: () => "+=" + (valueDescriptionItemRef.current?.offsetHeight || 0),
-
-      //       // toggleActions: "play none reverse none",
-
-      //       scrub: true,
-      //       invalidateOnRefresh: true,
-
-      //     }
-
-      //   })
-      //   imageTimeline
-      //     .to(panel, { y: -(valueDescriptionHeight * (panels.length - 1)) })
-      //     ;
-      // });
-
-      // ScrollTrigger.create({
-
-      //   trigger: containerRef.current,
-      //   scroller: containerRef.current,
-      //   start: () => "top top",
-      //   end: () => "+=" + (valueDescriptionItemRef.current?.offsetHeight || 0),
-      //   onUpdate: () => { console.log("test update") },
-      //   pin: '.panel',
-      //   anticipatePin: 1,
-
-      //   invalidateOnRefresh: true,
-
-      // });
-
-
-      // gsap.to(panels, {
-      //   y: -(valueDescriptionHeight * (panels.length - 1)),
-      //   scrollTrigger: {
-      //     start: 'top',
-      //     trigger: containerRef.current,
-      //     invalidateOnRefresh: true,
-      //     pin: true,
-      //     scrub: 5,
-      //     snap: {
-      //       snapTo: 1 / (panels.length - 1),
-      //       duration: 0.5
-      //     },
-      //     end: () => {
-      //       return "+=" + (valueDescriptionItemRef.current?.offsetHeight || 0)
-      //     },
-      //   }
-      // });
-      // let animating = false;
-      // Observer.create({
-      //   target: containerRef.current,
-      //   type: "wheel,touch,pointer",
-      //   wheelSpeed: -1,
-      //   onDown: () => console.log("down"),
-      //   onUp: () => console.log("up"),
-      //   tolerance: 10,
-      // });
     },
     {
       scope: containerRef,
@@ -245,7 +170,7 @@ export default function () {
       <div ref={scrollContainerRef}>
         {
           valueItems.map((item, index) => {
-            return <div className=' h-screen container-panel' />
+            return <div id={`container-panel-${index}`} className=' h-screen container-panel' />
           })
         }
       </div>
@@ -255,7 +180,7 @@ export default function () {
 }
 const ValueImageItem = ({ image }: any) => {
   return (
-    <div className='w-[100vw] relative dark:bg-dark image-panel'>
+    <div className=' relative dark:bg-dark image-panel'>
       <div className=' px-8 flex justify-center relative z-10 dark:bg-dark'>
         <img src={image} alt="Start" />
       </div>
@@ -264,7 +189,7 @@ const ValueImageItem = ({ image }: any) => {
 }
 const ValueDescriptionItem = ({ title, description }: any) => {
   return (
-    <div className='w-[100vw] dark:bg-dark panel'>
+    <div className=' dark:bg-dark panel'>
       <div className='text-center flex flex-col space-y-1 pt-2 relative h-[156px]'>
         <div className=' text-xl font-semibold'>{title}</div>
         <div >{description}</div>

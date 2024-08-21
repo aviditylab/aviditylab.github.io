@@ -58,7 +58,7 @@ export default function () {
   }, [heroTheme])
   return (
     <BgContext.Provider value={{ bg, setBg }}>
-      <HeroThemeContext.Provider value={{ heroTheme, setHeroTheme }}><div className=" w-screen h-screen relative">
+      <HeroThemeContext.Provider value={{ heroTheme, setHeroTheme }}><div className=" h-screen relative">
         <div className="bg-light dark:bg-dark text-black dark:text-white">
           <img src={bgImage} className=" absolute h-screen right-0 z-0" />
           <div className={`relative  z-10 flex flex-col h-screen mx-10`}>
