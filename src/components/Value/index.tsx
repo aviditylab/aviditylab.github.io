@@ -85,41 +85,50 @@ export default function () {
       let containerPanels = gsap.utils.toArray('.container-panel');
       let tl = gsap.timeline()
       containerPanels.forEach((panel: any, i) => {
-        // gsap.to(panel, {
-        //   start: () => "top top",
-        //   end: () => "+=" + (panel.offsetHeight || 0),
-        //   scrollTo: { y: panel, autoKill: false },
-        //   duration: 3,
-        //   scrollTrigger: {
-        //     markers: true,
-        //     trigger: panel,
-        //     start: "top bottom-=1",
-        //     end: "bottom top+=1",
-        //     scrub: true,
-        //     onEnter: () => {
-        //       console.log('enter');
-        //     },
-        //     invalidateOnRefresh: true,
-        //   }
-        // })
         ScrollTrigger.create({
           trigger: panel,
           start: "bottom 90%",
           end: "bottom 10%",
           toggleActions: "restart none none reverse",
           markers: true,
+          invalidateOnRefresh: true,
           onEnterBack: (self) => {
+            if(containerPanels.length === i+1) return;
+            tl.to(valueDescriptionItemRef.current, {
+              scrollTo: valueDescriptionHeight * (i),
+              duration: 1
+            })
             tl.to(window, {
               scrollTo: `#container-panel-${i}`,
               duration: 1
-            })
+            }, '<')
+            tl.to(`#value-image-${i}`, {
+              opacity: 1,
+              duration: 1
+            }, '<')
+            tl.to(`#value-image-${i+1}`, {
+              opacity: 0,
+              duration: 1
+            }, '<')
           },
           onEnter: (self) => {
             if(containerPanels.length === i+1) return;
+            tl.to(valueDescriptionItemRef.current, {
+              scrollTo: valueDescriptionHeight * (i+1),
+              duration: 1
+            })
             tl.to(window, {
               scrollTo: `#container-panel-${i+1}`,
               duration: 1
-            })
+            }, '<')
+            tl.to(`#value-image-${i}`, {
+              opacity: 0,
+              duration: 1
+            }, '<')
+            tl.to(`#value-image-${i+1}`, {
+              opacity: 1,
+              duration: 1
+            }, '<')
           }
         });
         
@@ -130,28 +139,26 @@ export default function () {
       dependencies: [scrollContainerRef.current, scrollContainerRef.current?.children]
     }
   );
-
-  // const { height, width } = useWindowSize();
-  // React.useEffect(() => {
-  //   ScrollTrigger.refresh();
-  // }, [height, width])
   return (
     <div className='' ref={containerRef}>
       <div className=' top-0 sticky flex flex-col justify-between h-screen items-start text-center dark:bg-dark dark:text-white bg-light text-black z-10' >
         <div className=' text-2xl font-semibold text-center w-full z-20 py-4 dark:bg-dark'>
           <div >Your roadmap to tech venture success begins here</div>
           <div ref={valueImageItemRef} className='
-          flex flex-col overflow-hidden  dark:bg-dark'
-            style={{ height: valueImageHeight }}
-          >
+          flex flex-col overflow-hidden  dark:bg-dark items-center h-[536px] w-full relative'>
             {
               valueItems.map((item, index) => {
-                return <ValueImageItem key={index} {...item} />
+                return (
+                  <div id={`value-image-${index}`} className={`${index !== 0 && 'opacity-0'} absolute top-0 left-1/2 transform -translate-x-1/2 h-[536px] w-[536px]`}>
+                    <ValueImageItem key={index} {...item} />
+                  </div>
+                  
+                )
               })
             }
           </div>
         </div>
-        <div className=' h-[156px] z-10 overflow-hidden'>
+        <div className=' h-[156px] z-10 w-full overflow-hidden' ref={valueDescriptionItemRef}>
           {
             valueItems.map((item, index) => {
               return <ValueDescriptionItem key={index} {...item} />
@@ -170,7 +177,7 @@ export default function () {
       <div ref={scrollContainerRef}>
         {
           valueItems.map((item, index) => {
-            return <div id={`container-panel-${index}`} className=' h-screen container-panel' />
+            return <div key={index} id={`container-panel-${index}`} className=' h-screen container-panel' />
           })
         }
       </div>
@@ -178,18 +185,18 @@ export default function () {
 
   )
 }
-const ValueImageItem = ({ image }: any) => {
+const ValueImageItem = ({ image, index }: any) => {
   return (
-    <div className=' relative dark:bg-dark image-panel'>
-      <div className=' px-8 flex justify-center relative z-10 dark:bg-dark'>
-        <img src={image} alt="Start" />
+    <div className=' dark:bg-dark image-panel '>
+      <div className='relative  px-8 flex justify-center z-10 dark:bg-dark'>
+        <img src={image} alt="Start" className=' ' />
       </div>
     </div>
   )
 }
 const ValueDescriptionItem = ({ title, description }: any) => {
   return (
-    <div className=' dark:bg-dark panel'>
+    <div className=' dark:bg-dark panel w-full'>
       <div className='text-center flex flex-col space-y-1 pt-2 relative h-[156px]'>
         <div className=' text-xl font-semibold'>{title}</div>
         <div >{description}</div>
