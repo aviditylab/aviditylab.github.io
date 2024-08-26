@@ -10,6 +10,7 @@ import Faq from "../components/Faq"
 import ContactUs from "../components/ContactUs"
 import Hero from "../components/Hero"
 import Value from "../components/Value"
+import CTA from "../components/CTA"
 
 const IndexPage: React.FC<PageProps> = () => {
 
@@ -46,7 +47,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <Value />
       </div>
       <div className=" snap-start" ref={faqRef}>
-        <Faq />
+        <CTA />
       </div>
       <div className=" snap-start">
         <ContactUs />
