@@ -29,6 +29,7 @@ module.exports = {
         josefinSans: ["Josefin Sans", "ui-sans-serif", "system-ui"],
         livvic: ["Livvic", "ui-sans-serif", "system-ui"],
         satoshi: ["Satoshi", "ui-sans-serif", "system-ui"],
+        poppins: ['Poppins', 'ui-sans-serif', 'system-ui'],
       },
     },
   },

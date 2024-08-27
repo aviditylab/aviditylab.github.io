@@ -38,6 +38,7 @@ function useWindowSize() {
 
 
 export default function () {
+  const progressPercentageRef = React.useRef<HTMLDivElement>(null);
   const valueItems = [
     {
       image: StartDark,
@@ -73,6 +74,7 @@ export default function () {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
   const [valueDescriptionHeight, setValueDescriptionHeight] = React.useState(0);
   const [valueImageHeight, setValueImageHeight] = React.useState(0);
+  const [stepNumber, setStepNumber] = React.useState(1);
   React.useEffect(() => {
     const valueDescriptionHeight = valueDescriptionItemRef.current?.children[0].clientHeight
     const valueImageHeight = valueImageItemRef.current?.children[0].clientHeight
@@ -83,6 +85,8 @@ export default function () {
   useGSAP(
     () => {
       let containerPanels = gsap.utils.toArray('.container-panel');
+      let progressPercentage = progressPercentageRef.current;
+      let stepProgress = gsap.utils.toArray('#step-number');
       let tl = gsap.timeline()
       containerPanels.forEach((panel: any, i) => {
         ScrollTrigger.create({
@@ -93,7 +97,7 @@ export default function () {
           markers: true,
           invalidateOnRefresh: true,
           onEnterBack: (self) => {
-            if(containerPanels.length === i+1) return;
+            if (containerPanels.length === i + 1) return;
             tl.to(valueDescriptionItemRef.current, {
               scrollTo: valueDescriptionHeight * (i),
               duration: 1
@@ -106,32 +110,50 @@ export default function () {
               opacity: 1,
               duration: 1
             }, '<')
-            tl.to(`#value-image-${i+1}`, {
+            tl.to(`#value-image-${i + 1}`, {
               opacity: 0,
+              duration: 1
+            }, '<')
+            tl.to(progressPercentage, {
+              width: `${Math.abs((i + 1) * 20)}%`,
+              duration: 1
+            }, '<')
+            setStepNumber(i + 1);
+            tl.to(stepProgress, {
+              right: `${80 - (i) * 20}%`,
               duration: 1
             }, '<')
           },
           onEnter: (self) => {
-            if(containerPanels.length === i+1) return;
+            if (containerPanels.length === i + 1) return;
             tl.to(valueDescriptionItemRef.current, {
-              scrollTo: valueDescriptionHeight * (i+1),
+              scrollTo: valueDescriptionHeight * (i + 1),
               duration: 1
             })
             tl.to(window, {
-              scrollTo: `#container-panel-${i+1}`,
+              scrollTo: `#container-panel-${i + 1}`,
               duration: 1
             }, '<')
             tl.to(`#value-image-${i}`, {
               opacity: 0,
               duration: 1
             }, '<')
-            tl.to(`#value-image-${i+1}`, {
+            tl.to(`#value-image-${i + 1}`, {
               opacity: 1,
+              duration: 1
+            }, '<')
+            tl.to(progressPercentage, {
+              width: `${(i + 2) * 20}%`,
+              duration: 1
+            }, '<')
+            setStepNumber(i + 2);
+            tl.to(stepProgress, {
+              right: `${80 - (i + 1) * 20}%`,
               duration: 1
             }, '<')
           }
         });
-        
+
       })
     },
     {
@@ -145,14 +167,14 @@ export default function () {
         <div className=' text-2xl font-semibold text-center w-full z-20 py-4 dark:bg-dark'>
           <div >Your roadmap to tech venture success begins here</div>
           <div ref={valueImageItemRef} className='
-          flex flex-col overflow-hidden  dark:bg-dark items-center h-[536px] w-full relative'>
+          flex flex-col overflow-hidden  dark:bg-dark items-center h-[268px] w-full relative mt-6'>
             {
               valueItems.map((item, index) => {
                 return (
-                  <div id={`value-image-${index}`} className={`${index !== 0 && 'opacity-0'} absolute top-0 left-1/2 transform -translate-x-1/2 h-[536px] w-[536px]`}>
+                  <div key={index} id={`value-image-${index}`} className={`${index !== 0 && 'opacity-0'} absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-full`}>
                     <ValueImageItem key={index} {...item} />
                   </div>
-                  
+
                 )
               })
             }
@@ -169,8 +191,8 @@ export default function () {
 
         <div className='pb-4 w-full'>
           <div className="w-[80%] mx-auto bg-[#DEE2E6] rounded-full h-1.5 dark:bg-[#495057] relative z-20 pb-2">
-            <div className=' absolute top-[-28px]' style={{ right: '80%' }}>Step 1</div>
-            <div className="dark:bg-[#F8F9FA] h-1.5 rounded-full" style={{ width: '20%' }}></div>
+            <div className=' absolute top-[-28px]' id='step-number' style={{ right: '80%' }}>Step {stepNumber}</div>
+            <div className="dark:bg-[#F8F9FA] h-1.5 rounded-full" style={{ width: '20%' }} ref={progressPercentageRef}></div>
           </div>
         </div>
       </div>
@@ -187,10 +209,8 @@ export default function () {
 }
 const ValueImageItem = ({ image, index }: any) => {
   return (
-    <div className=' dark:bg-dark image-panel '>
-      <div className='relative  px-8 flex justify-center z-10 dark:bg-dark'>
-        <img src={image} alt="Start" className=' ' />
-      </div>
+    <div className=' dark:bg-dark image-panel relative flex justify-center z-10'>
+      <img src={image} alt="Start" className='object-scale-down h-[268px] w-[268px]' />
     </div>
   )
 }
