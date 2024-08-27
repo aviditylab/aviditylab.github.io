@@ -9,9 +9,11 @@ import bgRedDark from './bg-red-dark.png';
 import bgOrangeDark from './bg-orange-dark.png';
 import bgPurpleDark from './bg-purple-dark.png';
 import bgBlack from './bg-black.png';
+import useHandleToWa from "../hooks/useHandleToWa";
 export const BgContext = React.createContext({ bg: "black", setBg: (color: string) => { } });
 export const HeroThemeContext = React.createContext<{ heroTheme: string, setHeroTheme: React.Dispatch<React.SetStateAction<string>> }>({ heroTheme: "black", setHeroTheme: () => { } });
 export default function () {
+  const handleToWa = useHandleToWa();
   const [bg, setBg] = React.useState("blue");
   const [bgImage, setBgImage] = React.useState(bgBlue);
   const [heroTheme, setHeroTheme] = React.useState('dark')
@@ -64,7 +66,7 @@ export default function () {
           <div className={`relative  z-10 flex flex-col h-screen mx-10`}>
             <div className=" flex justify-between h-[15vh] items-center">
               <div className=" font-bold">Avidity</div>
-              <div className=" cursor-pointer py-2 px-4 border rounded-full border-black bg-[#F8F9FA] dark:text-black">
+              <div className=" cursor-pointer py-2 px-4 border rounded-full border-black bg-[#F8F9FA] dark:text-black font-semibold hover:bg-gray-200" onClick={handleToWa}>
                 Let's talk
               </div>
             </div>
