@@ -3,7 +3,10 @@ import React from "react";
 import { FaLightbulb } from "react-icons/fa";
 import gsap, { Linear } from 'gsap';
 import TextPlugin from "gsap/TextPlugin";
+import useHandleToWa from "../hooks/useHandleToWa";
 export default function () {
+
+    const handleToWa = useHandleToWa();
     const [brainstorming, setBrainstorming] = React.useState(false)
     const containerRef = React.useRef<HTMLDivElement>(null);
     gsap.registerPlugin(TextPlugin)
@@ -105,7 +108,7 @@ export default function () {
                         )
                     })}
                 </div>
-                <div className="w-full cursor-pointer  flex-none" onMouseEnter={() => setBrainstorming(true)} onMouseLeave={() => setBrainstorming(false)} >
+                <div className="w-full cursor-pointer  flex-none" onMouseEnter={() => setBrainstorming(true)} onMouseLeave={() => setBrainstorming(false)} onClick={handleToWa} >
                     <div className="flex justify-center items-center">
                         <div id="lightBulbContainer" className="flex items-center justify-center border-2 rounded-full p-1">
                             <div id="lightBulb" className=" bg-white rounded-full p-1">

@@ -19,7 +19,7 @@ export default function () {
       </div>
       <div className=" flex flex-col md:flex-row items-center md:mx-20 md: justify-around">
         <div className=" text-white flex justify-center space-x-2 items-center my-5">
-          <div className=" font-josefinSans text-lg font-bold">Avidity</div>
+          <div className=" font-josefinSans text-lg font-bold">Avidity Lab</div>
           <div className=' font-poppins text-xs'>Digital Product Agency</div>
         </div>
       </div>

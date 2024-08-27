@@ -91,11 +91,9 @@ export default function () {
       containerPanels.forEach((panel: any, i) => {
         ScrollTrigger.create({
           trigger: panel,
-          start: "bottom 80%",
-          end: "bottom 20%",
-          toggleActions: "restart none none reverse",
+          start: "bottom 90%",
+          end: "bottom 10%",
           markers: true,
-          invalidateOnRefresh: true,
           onEnterBack: (self) => {
             if (containerPanels.length === i + 1) return;
             tl.to(valueDescriptionItemRef.current, {
