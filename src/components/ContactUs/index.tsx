@@ -2,6 +2,7 @@ import * as React from "react"
 import { FcIdea } from "react-icons/fc";
 import useHandleToWa from "../hooks/useHandleToWa";
 import { FaArrowRight } from "react-icons/fa";
+import Footer from "../Footer";
 
 export default function () {
   const handleToWa = useHandleToWa();
@@ -57,31 +58,6 @@ export default function () {
         </div>
       </div>
     </div>
-    <div className=" text-white flex flex-col justify-end h-1/5">
-      <div className="flex justify-center font-livvic text-white text-xs my-3">
-        © 2024 Avidity. All rights reserved
-      </div>
-      <div className=" flex flex-col md:flex-row items-center md:mx-20 md: justify-around">
-        <div className=" text-white flex justify-center space-x-2 items-center my-5">
-          <div className=" font-josefinSans text-2xl font-bold">Avidity</div>
-          <div className="relative flex overflow-x-hidden text-xs">
-            <div className="animate-marquee whitespace-nowrap">
-              <span className="mx-2">- Digital Product Agency</span>
-            </div>
-            <div className="absolute animate-marquee2 whitespace-nowrap">
-              <span className="mx-2">- Digital Product Agency</span>
-            </div>
-          </div>
-        </div>
-        <div className="flex font-livvic justify-center space-x-2 my-2">
-          <a href="">Linkedin</a>
-          <a href="https://www.youtube.com/@aviditylab">Youtube</a>
-          <a href="https://dribbble.com/aviditylab">Dribbble</a>
-          <a href="https://www.instagram.com/aviditylab/">Instagram</a>
-          <a href="https://www.behance.net/aviditylab">Behance</a>
-        </div>
-      </div>
-    </div>
-
+    <Footer />
   </div>
 }

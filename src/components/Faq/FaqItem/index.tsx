@@ -8,8 +8,8 @@ interface FaqItemProps {
 
 const FaqItem: React.FC<FaqItemProps> = ({ question, answers }) => {
   const [show, setShow] = useState(false);
-  return (<div className=" border-b-2 border-solid border-gray-700 py-3 ">
-    <div className=" flex justify-between  items-center" onClick={() => setShow((prev) => !prev)}>
+  return (<div className=" border-b-2 border-solid border-gray-700 p-3 ">
+    <div className=" flex justify-between items-center" onClick={() => setShow((prev) => !prev)}>
       <div>
         {question}
       </div>
@@ -19,7 +19,6 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answers }) => {
           :
           <FaMinus />
         }
-
       </div>
     </div>
     <div className={` flex flex-col space-y-4 transition duration-150 ease-out hover:ease-in font-satoshi text-xs text-gray-500 overflow-hidden ${!show ? "h-0" : ""}`}>
