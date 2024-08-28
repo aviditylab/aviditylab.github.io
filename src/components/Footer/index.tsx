@@ -2,7 +2,7 @@ import * as React from 'react'
 export default function () {
   return (
     <div className=" text-white flex flex-col justify-end h-1/5">
-      <div className="flex font-livvic justify-center space-x-2 my-2">
+      <div className="flex font-livvic justify-center space-x-2 my-2 flex-wrap">
         <a className=' hover:font-bold' href="https://www.linkedin.com/company/aviditylab">Linkedin</a>
         <span>•</span>
         <a className=' hover:font-bold' href="https://www.youtube.com/@aviditylab">Youtube</a>

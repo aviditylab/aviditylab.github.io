@@ -93,63 +93,112 @@ export default function () {
           trigger: panel,
           start: "bottom 90%",
           end: "bottom 10%",
+          endTrigger: panel,
           markers: true,
-          onEnterBack: (self) => {
+          toggleActions: "play none none reverse",
+          onToggle: (self) => {
+            console.log(
+              'progress:',
+              self.progress.toFixed(3),
+              'direction:',
+              self.direction,
+              'velocity',
+              self.getVelocity()
+            );
+            console.log(i)
             if (containerPanels.length === i + 1) return;
             tl.to(valueDescriptionItemRef.current, {
-              scrollTo: valueDescriptionHeight * (i),
+              scrollTo: valueDescriptionHeight * (i + (self.direction == 1 ? 1 : 0)),
               duration: 1
             })
             tl.to(window, {
-              scrollTo: `#container-panel-${i}`,
+              scrollTo: `#container-panel-${i + (self.direction == 1 ? 1 : 0)}`,
               duration: 1
             }, '<')
             tl.to(`#value-image-${i}`, {
-              opacity: 1,
-              duration: 1
-            }, '<')
-            tl.to(`#value-image-${i + 1}`, {
               opacity: 0,
               duration: 1
             }, '<')
-            tl.to(progressPercentage, {
-              width: `${Math.abs((i + 1) * 20)}%`,
+            tl.to(`#value-image-${i + (self.direction == 1 ? 1 : 0)}`, {
+              opacity: 1,
               duration: 1
             }, '<')
-            setStepNumber(i + 1);
+            tl.to(progressPercentage, {
+              width: `${(i + (self.direction == 1 ? 2 : 1)) * 20}%`,
+              duration: 1
+            }, '<')
+            setStepNumber(i + ((self.direction == 1 ? 2 : 1)));
             tl.to(stepProgress, {
-              right: `${80 - (i) * 20}%`,
+              right: `${80 - (i + (self.direction == 1 ? 1 : 0)) * 20}%`,
               duration: 1
             }, '<')
           },
-          onEnter: (self) => {
-            if (containerPanels.length === i + 1) return;
-            tl.to(valueDescriptionItemRef.current, {
-              scrollTo: valueDescriptionHeight * (i + 1),
-              duration: 1
-            })
-            tl.to(window, {
-              scrollTo: `#container-panel-${i + 1}`,
-              duration: 1
-            }, '<')
-            tl.to(`#value-image-${i}`, {
-              opacity: 0,
-              duration: 1
-            }, '<')
-            tl.to(`#value-image-${i + 1}`, {
-              opacity: 1,
-              duration: 1
-            }, '<')
-            tl.to(progressPercentage, {
-              width: `${(i + 2) * 20}%`,
-              duration: 1
-            }, '<')
-            setStepNumber(i + 2);
-            tl.to(stepProgress, {
-              right: `${80 - (i + 1) * 20}%`,
-              duration: 1
-            }, '<')
-          }
+          // onUpdate: (self) => {
+          //   console.log(
+          //     'progress:',
+          //     self.progress.toFixed(3),
+          //     'direction:',
+          //     self.direction,
+          //     'velocity',
+          //     self.getVelocity()
+          //   );
+          //   console.log(i)
+          // }
+          // onEnterBack: (self) => {
+          //   tl.to(valueDescriptionItemRef.current, {
+          //     scrollTo: valueDescriptionHeight * (i),
+          //     duration: 1
+          //   })
+          //   tl.to(window, {
+          //     scrollTo: `#container-panel-${i}`,
+          //     duration: 1
+          //   }, '<')
+          //   tl.to(`#value-image-${i}`, {
+          //     opacity: 1,
+          //     duration: 1
+          //   }, '<')
+          //   tl.to(`#value-image-${i + 1}`, {
+          //     opacity: 0,
+          //     duration: 1
+          //   }, '<')
+          //   tl.to(progressPercentage, {
+          //     width: `${Math.abs((i + 1) * 20)}%`,
+          //     duration: 1
+          //   }, '<')
+          //   setStepNumber(i + 1);
+          //   tl.to(stepProgress, {
+          //     right: `${80 - (i) * 20}%`,
+          //     duration: 1
+          //   }, '<')
+          // },
+          // onEnter: (self) => {
+          //   if (containerPanels.length === i + 1) return;
+          //   tl.to(valueDescriptionItemRef.current, {
+          //     scrollTo: valueDescriptionHeight * (i + 1),
+          //     duration: 1
+          //   })
+          //   tl.to(window, {
+          //     scrollTo: `#container-panel-${i + 1}`,
+          //     duration: 1
+          //   }, '<')
+          //   tl.to(`#value-image-${i}`, {
+          //     opacity: 0,
+          //     duration: 1
+          //   }, '<')
+          //   tl.to(`#value-image-${i + 1}`, {
+          //     opacity: 1,
+          //     duration: 1
+          //   }, '<')
+          //   tl.to(progressPercentage, {
+          //     width: `${(i + 2) * 20}%`,
+          //     duration: 1
+          //   }, '<')
+          //   setStepNumber(i + 2);
+          //   tl.to(stepProgress, {
+          //     right: `${80 - (i + 1) * 20}%`,
+          //     duration: 1
+          //   }, '<')
+          // }
         });
 
       })
@@ -194,7 +243,7 @@ export default function () {
           </div>
         </div>
       </div>
-      <div ref={scrollContainerRef}>
+      <div ref={scrollContainerRef} >
         {
           valueItems.map((item, index) => {
             return <div key={index} id={`container-panel-${index}`} className=' h-screen container-panel' />
