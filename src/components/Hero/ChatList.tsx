@@ -32,25 +32,27 @@ const ColorPicker = () => {
     </div>
   )
 }
-
-export default function () {
+const UserLogo = () => {
+  return <div className=" h-[18px] w-[18px] bg-black rounded-full flex justify-center items-center"><HiUser color="white" /></div>
+}
+export default function ({ chatContainerRef }: { chatContainerRef: any }) {
   const colorContext = React.useContext(BgContext)
   const heroTheme = React.useContext(HeroThemeContext)
   const chatData = [
     {
       message: "Can we change the color?",
-      logo: HiUser,
+      logo: UserLogo,
     },
     {
       message: "Sure, what color would you like?",
       logo: AvidityLabLogo,
     }, {
       message: `I want the primary color to be ${colorContext.bg}`,
-      logo: HiUser,
+      logo: UserLogo,
       additional: ColorPicker,
     }, {
       message: "Also a quick access features would be great",
-      logo: HiUser,
+      logo: UserLogo,
     },
     {
       message: `We've got you covered and adding ${heroTheme.heroTheme} mode as well`,
@@ -58,22 +60,25 @@ export default function () {
       additional: ThemePicker,
     },
   ]
-  const chatContainerRef = React.useRef<HTMLDivElement>(null)
   return (
-    <div className=" flex flex-col space-y-4" ref={chatContainerRef}>
-      {chatData.map((item, index) => {
-        return (
-          <div className="flex text-sm lg:text-md space-x-1" key={index}>
-            <div className="flex items-center">
-              <item.logo />
+    <div className=" flex flex-col-reverse min-h-60 overflow-hidden py-5">
+      <div className=" flex space-y-4 flex-col" ref={chatContainerRef}>
+        {chatData.map((item, index) => {
+          return (
+            <div className="flex text-sm lg:text-xl space-x-1 chat-list-items" key={index} id={`chat-item-${index}`}>
+              <div className="flex items-center">
+                <item.logo />
+              </div>
+              <div className=" flex lg:flex-row flex-col justify-normal lg:justify-center items-start lg:items-center space-y-1 space-x-1">
+                <div className=" bg-[#E9ECEF] dark:bg-[#343A40] px-2 py-1 rounded-t-xl rounded-r-xl">{item.message}</div>
+                {item.additional && <item.additional />}
+              </div>
             </div>
-            <div className=" flex lg:flex-row flex-col justify-normal lg:justify-center items-start space-y-1 space-x-1">
-              <div className=" bg-[#E9ECEF] dark:bg-[#343A40] px-2 py-1 rounded-t-xl rounded-r-xl">{item.message}</div>
-              {item.additional && <item.additional />}
-            </div>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
+
     </div>
+
   )
 }

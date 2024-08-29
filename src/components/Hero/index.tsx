@@ -10,13 +10,15 @@ import bgOrangeDark from './bg-orange-dark.png';
 import bgPurpleDark from './bg-purple-dark.png';
 import bgBlack from './bg-black.png';
 import useHandleToWa from "../hooks/useHandleToWa";
+import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
 export const BgContext = React.createContext({ bg: "black", setBg: (color: string) => { } });
 export const HeroThemeContext = React.createContext<{ heroTheme: string, setHeroTheme: React.Dispatch<React.SetStateAction<string>> }>({ heroTheme: "black", setHeroTheme: () => { } });
 export default function () {
   const handleToWa = useHandleToWa();
   const [bg, setBg] = React.useState("blue");
   const [bgImage, setBgImage] = React.useState(bgBlue);
-  const [heroTheme, setHeroTheme] = React.useState('dark')
+  const [heroTheme, setHeroTheme] = React.useState('light')
 
   React.useEffect(() => {
     switch (`${heroTheme}-${bg}`) {
@@ -58,6 +60,68 @@ export default function () {
     }
     localStorage.theme = heroTheme
   }, [heroTheme])
+
+  const chatContainerRef = React.useRef<HTMLDivElement>(null)
+  useGSAP(() => {
+    if (chatContainerRef.current == null) return;
+    let tl = gsap.timeline()
+    let containerPanels = gsap.utils.toArray('.chat-list-items');
+
+    if (!containerPanels[0]) return;
+    const firstPanel = containerPanels[0] as any;
+    tl.from(containerPanels[0], {
+      duration: 2,
+      y: -(chatContainerRef.current?.offsetHeight + 200 || 0)
+    })
+
+
+    const heroWants = document.getElementById('hero-wants');
+    const heroNeeds = document.getElementById('hero-needs');
+    const heroLoves = document.getElementById('hero-loves');
+    if (!heroWants || !heroNeeds || !heroLoves) return;
+    tl.to(heroWants, {
+      opacity: 1,
+      duration: 2
+    }, "<")
+
+    containerPanels.forEach((panel: any, i) => {
+      if (i == 0) return;
+      tl.to(chatContainerRef.current, {
+        height: `+=${panel.offsetHeight + 16}px`,
+        duration: 2
+      })
+      tl.to(panel, {
+        display: "flex",
+      }, "<")
+      tl.from(panel, {
+        duration: 1,
+        y: (chatContainerRef.current?.offsetHeight || 0)
+      }, "<")
+      if (i == 3) {
+        tl.to(heroNeeds, {
+          opacity: 1,
+          duration: 2
+        }, "<")
+      }
+      if (i == 4) {
+        tl.to(heroLoves, {
+          opacity: 1,
+          duration: 2,
+          onComplete: () => {
+
+            setHeroTheme('dark')
+          }
+        }, "<")
+      }
+    })
+    containerPanels.forEach((panel: any, i) => {
+      panel.style.display = "none";
+    })
+    firstPanel.style.display = "flex";
+
+  }, {
+    dependencies: [chatContainerRef]
+  })
   return (
     <BgContext.Provider value={{ bg, setBg }}>
       <HeroThemeContext.Provider value={{ heroTheme, setHeroTheme }}><div className=" h-screen relative">
@@ -71,14 +135,18 @@ export default function () {
               </div>
             </div>
             <div className=" flex flex-col justify-between h-[85vh]">
-              <div className=" text-2xl">
+              <div className=" text-2xl lg:text-4xl">
                 <div className=" font-semibold">We Craft products</div>
                 <div className=" font-semibold">based on users</div>
-                <div className=" font-bold">wants • needs • loves</div>
+                <div className=" font-bold flex space-x-2">
+                  <div id="hero-wants" className=" opacity-50">wants</div>
+                  <div id="hero-needs" className=" opacity-50">• needs</div>
+                  <div id="hero-loves" className=" opacity-50">• loves</div>
+                </div>
               </div>
               <div>
-                <ChatList />
-                <div className=" py-6 text-sm text-center">
+                <ChatList chatContainerRef={chatContainerRef} />
+                <div className=" py-6 text-sm text-center lg:text-lg">
                   Welcome to Avidity Lab [uh-vi-duh-tee læb]
                 </div>
               </div>

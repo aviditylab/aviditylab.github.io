@@ -102,7 +102,7 @@ export default function () {
                             selectedColor = colorsText[2];
                         }
                         return (
-                            <div key={index} className="text-white font-bold  w-[45vw]" style={{ color: (selectedColor) }}>
+                            <div key={index} className="text-white font-bold  w-[45vw] lg:w-[25vw]" style={{ color: (selectedColor) }}>
                                 {text}
                             </div>
                         )
@@ -135,7 +135,7 @@ export default function () {
                             selectedColor = colorsText[0];
                         }
                         return (
-                            <div key={index} className="text-white font-bold  w-[45vw]" style={{ color: (selectedColor) }}>
+                            <div key={index} className="text-white font-bold  w-[45vw] lg:w-[25vw]" style={{ color: (selectedColor) }}>
                                 {text}
                             </div>
                         )

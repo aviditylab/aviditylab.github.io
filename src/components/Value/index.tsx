@@ -10,32 +10,6 @@ import { Observer } from "gsap/Observer";
 import { useGSAP } from '@gsap/react';
 import ScrollToPlugin from 'gsap/ScrollToPlugin'
 
-function useWindowSize() {
-  // Initialize state with undefined width/height so server and client renders match
-  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = React.useState({
-    width: 0,
-    height: 0,
-  });
-  React.useEffect(() => {
-    // Handler to call on window resize
-    function handleResize() {
-      // Set window width/height to state
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
-  return windowSize;
-}
-
 
 export default function () {
   const progressPercentageRef = React.useRef<HTMLDivElement>(null);
@@ -135,9 +109,11 @@ export default function () {
   );
   return (
     <div className='' ref={containerRef}>
-      <div className=' top-0 sticky flex flex-col justify-between h-screen items-start text-center dark:bg-dark dark:text-white bg-light text-black z-10' >
+      <div className=' top-0 sticky flex flex-col h-screen justify-around items-start text-center dark:bg-dark dark:text-white bg-light text-black z-10' >
         <div className=' text-2xl font-semibold text-center w-full z-20 py-4 dark:bg-dark'>
           <div >Your roadmap to tech venture success begins here</div>
+        </div>
+        <div className='flex flex-col space-y-4 lg:flex-row-reverse px-0 lg:px-10'>
           <div ref={valueImageItemRef} className='
           flex flex-col overflow-hidden  dark:bg-dark items-center h-[268px] w-full relative mt-6'>
             {
@@ -151,13 +127,14 @@ export default function () {
               })
             }
           </div>
-        </div>
-        <div className=' h-[156px] z-10 w-full overflow-hidden' ref={valueDescriptionItemRef}>
-          {
-            valueItems.map((item, index) => {
-              return <ValueDescriptionItem key={index} {...item} />
-            })
-          }
+          <div className=' h-[156px] z-10 w-full overflow-hidden' ref={valueDescriptionItemRef}>
+            {
+              valueItems.map((item, index) => {
+                return <ValueDescriptionItem key={index} {...item} />
+              })
+            }
+          </div>
+
         </div>
 
 
@@ -175,7 +152,7 @@ export default function () {
           })
         }
       </div>
-    </div>
+    </div >
 
   )
 }
@@ -189,8 +166,8 @@ const ValueImageItem = ({ image, index }: any) => {
 const ValueDescriptionItem = ({ title, description }: any) => {
   return (
     <div className=' dark:bg-dark panel w-full'>
-      <div className='text-center flex flex-col space-y-1 pt-2 relative h-[156px]'>
-        <div className=' text-xl font-semibold'>{title}</div>
+      <div className='text-center text-md lg:text-lg lg:text-left flex flex-col space-y-1 pt-2 relative h-[156px]'>
+        <div className=' text-xl lg:text-2xl font-semibold'>{title}</div>
         <div >{description}</div>
       </div>
     </div>
