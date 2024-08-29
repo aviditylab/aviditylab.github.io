@@ -24,10 +24,10 @@ const ColorPicker = () => {
   return (
     <div>
       <div className="flex space-x-1">
-        <div className="w-3 h-3 rounded-full bg-blue-500 bg-opacity-50 cursor-pointer" onClick={() => colorContext.setBg("blue")}></div>
-        <div className="w-3 h-3 rounded-full bg-orange-500 bg-opacity-50 cursor-pointer" onClick={() => colorContext.setBg("orange")}></div>
-        <div className="w-3 h-3 rounded-full bg-red-500 bg-opacity-50 cursor-pointer" onClick={() => colorContext.setBg("red")}></div>
-        <div className="w-3 h-3 rounded-full bg-purple-500 bg-opacity-50 cursor-pointer" onClick={() => colorContext.setBg("purple")}></div>
+        <div className="w-3 h-3 rounded-full bg-blue-500  cursor-pointer" onClick={() => colorContext.setBg("blue")}></div>
+        <div className="w-3 h-3 rounded-full bg-orange-500  cursor-pointer" onClick={() => colorContext.setBg("orange")}></div>
+        <div className="w-3 h-3 rounded-full bg-red-500  cursor-pointer" onClick={() => colorContext.setBg("red")}></div>
+        <div className="w-3 h-3 rounded-full bg-purple-500  cursor-pointer" onClick={() => colorContext.setBg("purple")}></div>
       </div>
     </div>
   )
@@ -58,15 +58,16 @@ export default function () {
       additional: ThemePicker,
     },
   ]
+  const chatContainerRef = React.useRef<HTMLDivElement>(null)
   return (
-    <div className=" flex flex-col space-y-4">
+    <div className=" flex flex-col space-y-4" ref={chatContainerRef}>
       {chatData.map((item, index) => {
         return (
-          <div className="flex text-md space-x-1" key={index}>
+          <div className="flex text-sm lg:text-md space-x-1" key={index}>
             <div className="flex items-center">
               <item.logo />
             </div>
-            <div className=" flex justify-center items-center space-x-1">
+            <div className=" flex lg:flex-row flex-col justify-normal lg:justify-center items-start space-y-1 space-x-1">
               <div className=" bg-[#E9ECEF] dark:bg-[#343A40] px-2 py-1 rounded-t-xl rounded-r-xl">{item.message}</div>
               {item.additional && <item.additional />}
             </div>

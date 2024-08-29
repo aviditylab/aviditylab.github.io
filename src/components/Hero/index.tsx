@@ -62,7 +62,7 @@ export default function () {
     <BgContext.Provider value={{ bg, setBg }}>
       <HeroThemeContext.Provider value={{ heroTheme, setHeroTheme }}><div className=" h-screen relative">
         <div className="bg-light dark:bg-dark text-black dark:text-white">
-          <img src={bgImage} className=" absolute h-screen right-0 z-0" />
+          <img src={bgImage} className=" absolute bottom-0 h-auto lg:h-screen right-0 z-0" />
           <div className={`relative  z-10 flex flex-col h-screen mx-10`}>
             <div className=" flex justify-between h-[15vh] items-center">
               <div className=" font-bold">Avidity</div>
@@ -71,14 +71,14 @@ export default function () {
               </div>
             </div>
             <div className=" flex flex-col justify-between h-[85vh]">
-              <div className=" text-5xl">
+              <div className=" text-2xl">
                 <div className=" font-semibold">We Craft products</div>
                 <div className=" font-semibold">based on users</div>
                 <div className=" font-bold">wants • needs • loves</div>
               </div>
               <div>
                 <ChatList />
-                <div className=" py-10">
+                <div className=" py-6 text-sm text-center">
                   Welcome to Avidity Lab [uh-vi-duh-tee læb]
                 </div>
               </div>

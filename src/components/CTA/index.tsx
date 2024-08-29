@@ -5,11 +5,11 @@ import gsap, { Linear } from 'gsap';
 import TextPlugin from "gsap/TextPlugin";
 import useHandleToWa from "../hooks/useHandleToWa";
 export default function () {
-
     const handleToWa = useHandleToWa();
     const [brainstorming, setBrainstorming] = React.useState(false)
     const containerRef = React.useRef<HTMLDivElement>(null);
     gsap.registerPlugin(TextPlugin)
+    const [haveIdea, setHaveIdea] = React.useState(false);
     useGSAP(() => {
         const lightBulb = document.getElementById("lightBulb");
         const lightBulbText = document.getElementById("lightBulbText");
@@ -108,7 +108,11 @@ export default function () {
                         )
                     })}
                 </div>
-                <div className="w-full cursor-pointer  flex-none" onMouseEnter={() => setBrainstorming(true)} onMouseLeave={() => setBrainstorming(false)} onClick={handleToWa} >
+                <div className="w-full cursor-pointer  flex-none" onClick={() => {
+                    if (brainstorming) return handleToWa()
+                    return setBrainstorming((prev) => !prev)
+                }
+                } >
                     <div className="flex justify-center items-center">
                         <div id="lightBulbContainer" className="flex items-center justify-center border-2 rounded-full p-1">
                             <div id="lightBulb" className=" bg-white rounded-full p-1">
@@ -122,7 +126,7 @@ export default function () {
 
                 </div>
                 <div className="flex-1 flex-wrap flex justify-center items-center text-center text-lang opacity-0">
-                    {firstPartText.map((text, index) => {
+                    {secondPartText.map((text, index) => {
                         let selectedColor = colorsText[2];
                         if (index > 1) {
                             selectedColor = colorsText[1];
