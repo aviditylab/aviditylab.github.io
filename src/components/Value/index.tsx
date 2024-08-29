@@ -68,7 +68,6 @@ export default function () {
           start: "bottom 90%",
           end: "bottom 10%",
           endTrigger: panel,
-          markers: true,
           toggleActions: "play none none reverse",
           onToggle: (self) => {
             if (containerPanels.length === i + 1) return;
@@ -109,11 +108,11 @@ export default function () {
   );
   return (
     <div className='' ref={containerRef}>
-      <div className=' top-0 sticky flex flex-col h-screen justify-around items-start text-center dark:bg-dark dark:text-white bg-light text-black z-10' >
+      <div className='lg:px-40 top-0 sticky flex flex-col h-screen justify-around items-start text-center dark:bg-dark dark:text-white bg-light text-black z-10' >
         <div className=' text-2xl font-semibold text-center w-full z-20 py-4 dark:bg-dark'>
           <div >Your roadmap to tech venture success begins here</div>
         </div>
-        <div className='flex flex-col space-y-4 lg:flex-row-reverse px-0 lg:px-40 justify-center items-center'>
+        <div className='flex flex-col space-y-4 lg:flex-row-reverse px-0  justify-center items-center'>
           <div ref={valueImageItemRef} className='
           flex flex-col overflow-hidden  dark:bg-dark items-center h-[268px] w-full lg:w-[290px] relative mt-6 lg:flex-1'>
             {

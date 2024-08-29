@@ -2,7 +2,7 @@ import React from 'react';
 import { TbPointFilled } from "react-icons/tb";
 const WhoWeAre: React.FC = () => {
   return (
-    <div className='flex flex-col lg:flex-row space-y-5 lg:space-y-0 py-40 items-start font-livvic px-10 snap-center lg:pt-60 bg-light dark:text-white text-black dark:bg-dark' >
+    <div className=' lg:px-40 flex flex-col lg:flex-row space-y-5 lg:space-y-0 py-40 items-start font-livvic px-10 snap-center lg:pt-60 bg-light dark:text-white text-black dark:bg-dark' >
       <div className=' flex flex-1 justify-center items-center text-md md:text-xl'>
         <TbPointFilled /> Who are we?
       </div>
