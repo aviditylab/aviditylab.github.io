@@ -113,13 +113,13 @@ export default function () {
         <div className=' text-2xl font-semibold text-center w-full z-20 py-4 dark:bg-dark'>
           <div >Your roadmap to tech venture success begins here</div>
         </div>
-        <div className='flex flex-col space-y-4 lg:flex-row-reverse px-0 lg:px-10'>
+        <div className='flex flex-col space-y-4 lg:flex-row-reverse px-0 lg:px-40 justify-center items-center'>
           <div ref={valueImageItemRef} className='
-          flex flex-col overflow-hidden  dark:bg-dark items-center h-[268px] w-full relative mt-6'>
+          flex flex-col overflow-hidden  dark:bg-dark items-center h-[268px] w-full lg:w-[290px] relative mt-6 lg:flex-1'>
             {
               valueItems.map((item, index) => {
                 return (
-                  <div key={index} id={`value-image-${index}`} className={`${index !== 0 && 'opacity-0'} absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-full`}>
+                  <div key={index} id={`value-image-${index}`} className={`${index !== 0 && 'opacity-0'} absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-full lg:w-[280px]`}>
                     <ValueImageItem key={index} {...item} />
                   </div>
 
@@ -127,7 +127,7 @@ export default function () {
               })
             }
           </div>
-          <div className=' h-[156px] z-10 w-full overflow-hidden' ref={valueDescriptionItemRef}>
+          <div className=' h-[156px] z-10 w-full overflow-hidden lg:flex-1' ref={valueDescriptionItemRef}>
             {
               valueItems.map((item, index) => {
                 return <ValueDescriptionItem key={index} {...item} />
@@ -141,7 +141,7 @@ export default function () {
         <div className='pb-4 w-full'>
           <div className="w-[80%] mx-auto bg-[#DEE2E6] rounded-full h-1.5 dark:bg-[#495057] relative z-20 pb-2">
             <div className=' absolute top-[-28px]' id='step-number' style={{ right: '80%' }}>Step {stepNumber}</div>
-            <div className="dark:bg-[#F8F9FA] h-1.5 rounded-full" style={{ width: '20%' }} ref={progressPercentageRef}></div>
+            <div className="dark:bg-[#F8F9FA] bg-[#6C757D] h-1.5 rounded-full" style={{ width: '20%' }} ref={progressPercentageRef}></div>
           </div>
         </div>
       </div>
