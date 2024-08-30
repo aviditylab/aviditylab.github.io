@@ -55,7 +55,7 @@ export default function () {
     if (valueDescriptionHeight) setValueDescriptionHeight(valueDescriptionHeight);
     if (valueImageHeight) setValueImageHeight(valueImageHeight);
   }, [valueDescriptionItemRef.current?.children[0].clientHeight, valueImageItemRef.current?.children[0].clientHeight])
-
+  const [isAnimating, setIsAnimating] = React.useState(false);
   useGSAP(
     () => {
       let containerPanels = gsap.utils.toArray('.container-panel');
@@ -67,13 +67,15 @@ export default function () {
           trigger: panel,
           start: "bottom 90%",
           end: "bottom 10%",
-          endTrigger: panel,
-          toggleActions: "play none none reverse",
           onToggle: (self) => {
-            if (containerPanels.length === i + 1) return;
+            if (tl.isActive() || i + 1 == containerPanels.length) return;
             tl.to(valueDescriptionItemRef.current, {
               scrollTo: valueDescriptionHeight * (i + (self.direction == 1 ? 1 : 0)),
-              duration: 1
+              duration: 1,
+              overwrite: 'auto',
+              onStart: () => {
+                setIsAnimating(true);
+              }
             })
             tl.to(window, {
               scrollTo: `#container-panel-${i + (self.direction == 1 ? 1 : 0)}`,
@@ -94,7 +96,10 @@ export default function () {
             setStepNumber(i + ((self.direction == 1 ? 2 : 1)));
             tl.to(stepProgress, {
               right: `${80 - (i + (self.direction == 1 ? 1 : 0)) * 20}%`,
-              duration: 1
+              duration: 1,
+              onComplete: () => {
+                setIsAnimating(false);
+              }
             }, '<')
           }
         });
