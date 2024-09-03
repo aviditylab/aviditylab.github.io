@@ -1,15 +1,22 @@
 import { useGSAP } from "@gsap/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaLightbulb } from "react-icons/fa";
 import gsap, { Linear } from 'gsap';
 import TextPlugin from "gsap/TextPlugin";
 import useHandleToWa from "../hooks/useHandleToWa";
 export default function () {
+    const [clientWidth, setClientWidth] = React.useState(0);
+    useEffect(() => {
+        if (!window) return
+        if (!window.innerWidth) return
+        setClientWidth(window.innerWidth)
+    }, [])
+
     const handleToWa = useHandleToWa();
     const [brainstorming, setBrainstorming] = React.useState(false)
     const containerRef = React.useRef<HTMLDivElement>(null);
     gsap.registerPlugin(TextPlugin)
-    const [haveIdea, setHaveIdea] = React.useState(false);
+
     useGSAP(() => {
         const lightBulb = document.getElementById("lightBulb");
         const lightBulbText = document.getElementById("lightBulbText");
@@ -95,7 +102,7 @@ export default function () {
                 <div className="flex-1 flex-wrap flex justify-center items-center text-center text-lang opacity-0">
                     {firstPartText.map((text, index) => {
                         let selectedColor = colorsText[0];
-                        if (window.innerWidth > 1024) {
+                        if (clientWidth > 1024) {
                             selectedColor = colorsText[1];
                             if (index > 2) {
                                 selectedColor = colorsText[2];
@@ -136,7 +143,7 @@ export default function () {
                 <div className="flex-1 flex-wrap flex justify-center items-center text-center text-lang opacity-0">
                     {secondPartText.map((text, index) => {
                         let selectedColor = colorsText[2];
-                        if (window.innerWidth > 1024) {
+                        if (clientWidth > 1024) {
                             console.log('don this')
                             selectedColor = colorsText[2];
                             if (index > 2) {
