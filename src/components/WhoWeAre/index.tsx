@@ -2,11 +2,11 @@ import React from 'react';
 import { TbPointFilled } from "react-icons/tb";
 const WhoWeAre: React.FC = () => {
   return (
-    <div className=' lg:px-40 flex flex-col lg:flex-row space-y-5 lg:space-y-0 py-40 items-start font-livvic px-10 snap-center lg:pt-60 bg-light dark:text-white text-black dark:bg-dark' >
-      <div className=' flex flex-1 justify-center items-center text-md md:text-xl'>
+    <div className=' lg:px-20 lg:justify-center flex flex-col lg:flex-row space-y-5 lg:space-y-0 py-40 items-start font-livvic px-10 snap-center lg:pt-60 bg-light dark:text-white text-black dark:bg-dark lg:space-x-8' >
+      <div className=' flex flex-none justify-end items-center text-md md:text-2xl'>
         <TbPointFilled /> Who are we?
       </div>
-      <div className=' flex-[2] text-sm md:text-2xl'>
+      <div className=' flex-1 text-sm md:text-2xl text-justify'>
         A dedicated digital agency, firmly rooted in Indonesia since our establishment in 2024 — propelled by a vision to revolutionize the digital landscape. At our essence, we prioritize fostering enduring partnerships, recognizing that collaboration is pivotal to success in this dynamic industry.
       </div>
     </div>

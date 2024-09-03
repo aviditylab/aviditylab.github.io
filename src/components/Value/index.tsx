@@ -119,7 +119,7 @@ export default function () {
         </div>
         <div className='flex flex-col space-y-4 lg:flex-row-reverse px-0  justify-center items-center'>
           <div ref={valueImageItemRef} className='
-          flex flex-col overflow-hidden  dark:bg-dark items-center h-[268px] w-full lg:w-[290px] relative mt-6 lg:flex-1'>
+          flex flex-col overflow-hidden  dark:bg-dark items-center h-[268px] w-full lg:w-[290px] relative mt-6 lg:flex-none lg:ml-20'>
             {
               valueItems.map((item, index) => {
                 return (
@@ -131,7 +131,7 @@ export default function () {
               })
             }
           </div>
-          <div className=' h-[156px] z-10 w-full overflow-hidden lg:flex-1' ref={valueDescriptionItemRef}>
+          <div className=' h-[156px] z-10 w-full overflow-hidden lg:flex-1 mx-10' ref={valueDescriptionItemRef}>
             {
               valueItems.map((item, index) => {
                 return <ValueDescriptionItem key={index} {...item} />
@@ -142,8 +142,8 @@ export default function () {
         </div>
 
 
-        <div className='pb-4 w-full'>
-          <div className="w-[80%] mx-auto bg-[#DEE2E6] rounded-full h-1.5 dark:bg-[#495057] relative z-20 pb-2">
+        <div className='pb-4 w-full px-10'>
+          <div className="w-full lg:mx-auto  bg-[#DEE2E6] rounded-full h-1.5 dark:bg-[#495057] relative z-20 pb-2">
             <div className=' absolute top-[-28px]' id='step-number' style={{ right: '80%' }}>Step {stepNumber}</div>
             <div className="dark:bg-[#F8F9FA] bg-[#6C757D] h-1.5 rounded-full" style={{ width: '20%' }} ref={progressPercentageRef}></div>
           </div>

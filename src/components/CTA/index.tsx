@@ -95,14 +95,22 @@ export default function () {
                 <div className="flex-1 flex-wrap flex justify-center items-center text-center text-lang opacity-0">
                     {firstPartText.map((text, index) => {
                         let selectedColor = colorsText[0];
-                        if (index > 1) {
+                        if (window.innerWidth > 1024) {
                             selectedColor = colorsText[1];
-                        }
-                        if (index > 3) {
-                            selectedColor = colorsText[2];
+                            if (index > 2) {
+                                selectedColor = colorsText[2];
+                            }
+                        } else {
+                            if (index > 1) {
+                                selectedColor = colorsText[1];
+                            }
+                            if (index > 3) {
+                                selectedColor = colorsText[2];
+                            }
+
                         }
                         return (
-                            <div key={index} className="text-white font-bold  w-[45vw] lg:w-[25vw]" style={{ color: (selectedColor) }}>
+                            <div key={index} className="text-white font-bold  w-[45vw] lg:w-[30vw]" style={{ color: (selectedColor) }}>
                                 {text}
                             </div>
                         )
@@ -128,14 +136,22 @@ export default function () {
                 <div className="flex-1 flex-wrap flex justify-center items-center text-center text-lang opacity-0">
                     {secondPartText.map((text, index) => {
                         let selectedColor = colorsText[2];
-                        if (index > 1) {
-                            selectedColor = colorsText[1];
-                        }
-                        if (index > 3) {
-                            selectedColor = colorsText[0];
+                        if (window.innerWidth > 1024) {
+                            console.log('don this')
+                            selectedColor = colorsText[2];
+                            if (index > 2) {
+                                selectedColor = colorsText[1];
+                            }
+                        } else {
+                            if (index > 1) {
+                                selectedColor = colorsText[1];
+                            }
+                            if (index > 3) {
+                                selectedColor = colorsText[0];
+                            }
                         }
                         return (
-                            <div key={index} className="text-white font-bold  w-[45vw] lg:w-[25vw]" style={{ color: (selectedColor) }}>
+                            <div key={index} className="text-white font-bold  w-[45vw] lg:w-[30vw]" style={{ color: (selectedColor) }}>
                                 {text}
                             </div>
                         )

@@ -4,11 +4,12 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 interface FaqItemProps {
   question: string
   answers: string[]
+  index: number
 }
 
-const FaqItem: React.FC<FaqItemProps> = ({ question, answers }) => {
+const FaqItem: React.FC<FaqItemProps> = ({ question, answers, index }) => {
   const [show, setShow] = useState(false);
-  return (<div className={` border-t-2 border-solid border-gray-700 p-3 cursor-pointer ${!show ? "hover:bg-black hover:bg-opacity-50" : ""}`}
+  return (<div className={` w-full border-t-2 ${index == 0 && 'md:border-t-0'}  border-solid border-gray-700 p-3 cursor-pointer ${!show ? "hover:bg-black hover:bg-opacity-50" : ""}`}
     onClick={() => setShow((prev) => !prev)}
   >
     <div className=" flex justify-between items-center " >
