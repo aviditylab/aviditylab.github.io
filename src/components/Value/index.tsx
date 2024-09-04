@@ -113,7 +113,7 @@ export default function () {
   );
   return (
     <div className='' ref={containerRef}>
-      <div className='lg:px-40 top-0 sticky flex flex-col h-screen justify-around items-start text-center dark:bg-dark dark:text-white bg-light text-black z-10' >
+      <div className='lg:px-40 top-0 sticky flex flex-col h-screen justify-around items-center text-center dark:bg-dark dark:text-white bg-light text-black z-10' >
         <div className=' text-2xl font-semibold text-center w-full z-20 py-4 dark:bg-dark'>
           <div >Your roadmap to tech venture success begins here</div>
         </div>
