@@ -144,7 +144,6 @@ export default function () {
                     {secondPartText.map((text, index) => {
                         let selectedColor = colorsText[2];
                         if (clientWidth > 1024) {
-                            console.log('don this')
                             selectedColor = colorsText[2];
                             if (index > 2) {
                                 selectedColor = colorsText[1];

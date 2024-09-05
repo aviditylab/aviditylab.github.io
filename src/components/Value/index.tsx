@@ -55,7 +55,6 @@ export default function () {
     if (valueDescriptionHeight) setValueDescriptionHeight(valueDescriptionHeight);
     if (valueImageHeight) setValueImageHeight(valueImageHeight);
   }, [valueDescriptionItemRef.current?.children[0].clientHeight, valueImageItemRef.current?.children[0].clientHeight])
-  const [isAnimating, setIsAnimating] = React.useState(false);
   useGSAP(
     () => {
       let containerPanels = gsap.utils.toArray('.container-panel');
@@ -73,9 +72,6 @@ export default function () {
               scrollTo: valueDescriptionHeight * (i + (self.direction == 1 ? 1 : 0)),
               duration: 1,
               overwrite: 'auto',
-              onStart: () => {
-                setIsAnimating(true);
-              }
             })
             tl.to(window, {
               scrollTo: `#container-panel-${i + (self.direction == 1 ? 1 : 0)}`,
@@ -97,9 +93,6 @@ export default function () {
             tl.to(stepProgress, {
               right: `${80 - (i + (self.direction == 1 ? 1 : 0)) * 20}%`,
               duration: 1,
-              onComplete: () => {
-                setIsAnimating(false);
-              }
             }, '<')
           }
         });
@@ -115,7 +108,7 @@ export default function () {
     <div className='' ref={containerRef}>
       <div className='lg:px-40 top-0 sticky flex flex-col h-screen justify-around items-center text-center dark:bg-dark dark:text-white bg-light text-black z-10' >
         <div className=' text-2xl font-semibold text-center w-full z-20 py-4 dark:bg-dark'>
-          <div >Your roadmap to tech venture success begins here</div>
+          <div className=' mx-5'>Your roadmap to tech venture success begins here</div>
         </div>
         <div className='flex flex-col space-y-4 lg:flex-row-reverse px-0  justify-center items-center'>
           <div ref={valueImageItemRef} className='
@@ -131,7 +124,7 @@ export default function () {
               })
             }
           </div>
-          <div className=' h-[156px] z-10 w-full overflow-hidden lg:flex-1 mx-10' ref={valueDescriptionItemRef}>
+          <div className=' h-[156px] md:h-[268px] z-10 w-full overflow-hidden lg:flex-1 mx-10' ref={valueDescriptionItemRef}>
             {
               valueItems.map((item, index) => {
                 return <ValueDescriptionItem key={index} {...item} />
@@ -170,9 +163,9 @@ const ValueImageItem = ({ image, index }: any) => {
 const ValueDescriptionItem = ({ title, description }: any) => {
   return (
     <div className=' dark:bg-dark panel w-full'>
-      <div className='text-center text-md lg:text-lg lg:text-left flex flex-col space-y-1 pt-2 relative h-[156px]'>
+      <div className='text-center text-md lg:text-lg lg:text-left flex flex-col space-y-1 pt-2 relative h-[156px] md:h-[268px]'>
         <div className=' text-xl lg:text-2xl font-semibold'>{title}</div>
-        <div >{description}</div>
+        <div className=' mx-5 lg:mx-0 lg:text-justify text-center'>{description}</div>
       </div>
     </div>
   )
