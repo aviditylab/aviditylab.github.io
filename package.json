@@ -19,13 +19,14 @@
     "deploy-win": "gatsby build & gh-pages -f -d public"
   },
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^3.3.1",
     "@gsap/react": "^2.1.1",
-    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/react": "^2.3",
     "ajv": "^8.17.1",
     "autoprefixer": "^10.4.19",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.2.6",
-    "gatsby": "^5.13.3",
+    "gatsby": "^5.13.7",
     "gatsby-plugin-google-gtag": "^5.13.1",
     "gatsby-plugin-google-tagmanager": "^5.13.1",
     "gatsby-plugin-image": "^3.13.1",
@@ -51,7 +52,13 @@
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "babel-preset-gatsby": "^3.13.2",
     "gh-pages": "^6.1.1",
     "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
+      "react": "^18.0.0"
+    }
   }
 }

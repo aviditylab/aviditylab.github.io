@@ -12,6 +12,7 @@ import bgBlack from './bg-black.png';
 import useHandleToWa from "../hooks/useHandleToWa";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
+import Background from "../Background";
 export const BgContext = React.createContext({ bg: "black", setBg: (color: string) => { } });
 export const HeroThemeContext = React.createContext<{ heroTheme: string, setHeroTheme: React.Dispatch<React.SetStateAction<string>> }>({ heroTheme: "black", setHeroTheme: () => { } });
 export default function () {
@@ -126,7 +127,8 @@ export default function () {
     <BgContext.Provider value={{ bg, setBg }}>
       <HeroThemeContext.Provider value={{ heroTheme, setHeroTheme }}><div className=" h-screen relative">
         <div className="bg-light dark:bg-dark text-black dark:text-white">
-          <img src={bgImage} className=" absolute bottom-0 h-auto lg:h-screen right-0 z-0" />
+          {/* <img src={bgImage} className=" absolute bottom-0 h-auto lg:h-screen right-0 z-0" /> */}
+          <Background />
           <div className={`relative  z-10 flex flex-col h-screen mx-10`}>
             <div className=" flex justify-between h-[15vh] items-center">
               <div className=" font-bold">Avidity</div>
