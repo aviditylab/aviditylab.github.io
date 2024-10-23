@@ -60,5 +60,6 @@
     "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
       "react": "^18.0.0"
     }
-  }
+  },
+  "packageManager": "pnpm@8.6.7+sha1.019f4b93c5b07fb12e3097bae3d8f2d0cff444b7"
 }
