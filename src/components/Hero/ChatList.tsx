@@ -21,13 +21,17 @@ const ThemePicker = () => {
 
 const ColorPicker = () => {
   const colorContext = React.useContext(BgContext)
+  const handleChangeColor = (color: string) => {
+    colorContext.setBg(color)
+    colorContext.setBgText(color)
+  }
   return (
     <div>
       <div className="flex space-x-1">
-        <div className="w-3 h-3 rounded-full bg-blue-500  cursor-pointer" onClick={() => colorContext.setBg("blue")}></div>
-        <div className="w-3 h-3 rounded-full bg-orange-500  cursor-pointer" onClick={() => colorContext.setBg("orange")}></div>
-        <div className="w-3 h-3 rounded-full bg-red-500  cursor-pointer" onClick={() => colorContext.setBg("red")}></div>
-        <div className="w-3 h-3 rounded-full bg-purple-500  cursor-pointer" onClick={() => colorContext.setBg("purple")}></div>
+        <div className="w-3 h-3 rounded-full bg-blue-500  cursor-pointer" onClick={() => handleChangeColor("blue")}></div>
+        <div className="w-3 h-3 rounded-full bg-orange-500  cursor-pointer" onClick={() => handleChangeColor("orange")}></div>
+        <div className="w-3 h-3 rounded-full bg-red-500  cursor-pointer" onClick={() => handleChangeColor("red")}></div>
+        <div className="w-3 h-3 rounded-full bg-purple-500  cursor-pointer" onClick={() => handleChangeColor("purple")}></div>
       </div>
     </div>
   )
@@ -47,7 +51,7 @@ export default function ({ chatContainerRef }: { chatContainerRef: any }) {
       message: "Sure, what color would you like?",
       logo: AvidityLabLogo,
     }, {
-      message: `I want the primary color to be ${colorContext.bg}`,
+      message: `I want the primary color to be ${colorContext.bgText}`,
       logo: UserLogo,
       additional: ColorPicker,
     }, {

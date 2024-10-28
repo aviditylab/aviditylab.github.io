@@ -5,6 +5,7 @@ import MediaControl from './MediaControl';
 import Calendar from './Calendar';
 import PaymentConfirmation from './PaymentConfirmation';
 import Announcement from './Announcement';
+import MenuBar from './MenuBar';
 
 const Backgorund = () => {
   return (
@@ -20,6 +21,9 @@ const Backgorund = () => {
         <div className='ml-4 flex gap-4 items-center'>
           <Calendar />
           <PaymentConfirmation />
+        </div>
+        <div className='ml-4'>
+          <MenuBar />
         </div>
         <div className='ml-4'>
           <Announcement />

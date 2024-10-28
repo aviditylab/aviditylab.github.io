@@ -4,11 +4,12 @@ import useHandleToWa from "../hooks/useHandleToWa";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
 import Background from "../Background";
-export const BgContext = React.createContext({ bg: "black", setBg: (color: string) => { } });
+export const BgContext = React.createContext({ bgText: "blue", setBgText: (color: string) => { }, bg: "black", setBg: (color: string) => { } });
 export const HeroThemeContext = React.createContext<{ heroTheme: string, setHeroTheme: React.Dispatch<React.SetStateAction<string>> }>({ heroTheme: "black", setHeroTheme: () => { } });
 const Hero = () => {
   const handleToWa = useHandleToWa();
-  const [bg, setBg] = React.useState("blue");
+  const [bg, setBg] = React.useState("black");
+  const [bgText, setBgText] = React.useState("blue");
   const [heroTheme, setHeroTheme] = React.useState('light');
 
   React.useEffect(() => {
@@ -47,7 +48,12 @@ const Hero = () => {
       if (i === 0) return;
       tl.to(chatContainerRef.current, {
         height: `+=${panel.offsetHeight + 16}px`,
-        duration: 2
+        duration: 2,
+        onComplete: () => {
+          if (i === 2) {
+            setBg('blue');
+          }
+        }
       });
       tl.to(panel, {
         display: "flex",
@@ -67,7 +73,6 @@ const Hero = () => {
           opacity: 1,
           duration: 2,
           onComplete: () => {
-
             setHeroTheme('dark');
           }
         }, "<");
@@ -82,7 +87,7 @@ const Hero = () => {
     dependencies: [chatContainerRef]
   });
   return (
-    <BgContext.Provider value={{ bg, setBg }}>
+    <BgContext.Provider value={{ bgText, setBgText, bg, setBg }}>
       <HeroThemeContext.Provider value={{ heroTheme, setHeroTheme }}><div className=" h-screen relative">
         <div className="bg-light dark:bg-dark text-black dark:text-white relative overflow-hidden">
           <div className={`relative  z-10 flex flex-col h-screen mx-10`}>

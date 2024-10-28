@@ -34,9 +34,8 @@ export default function () {
           <div className=" font-semibold">Learn how</div>
         </div>
         <div className=" flex font-bold gap-4">
-          <div className=" py-2 px-4 text-gray-400">Cancel</div>
-          <div className={` py-2 px-4 rounded-full bg-${bg}-500 text-white`}>Submit</div>
-
+          <div className=" py-2 px-6 text-gray-400">Cancel</div>
+          <div className={` py-2 px-6 rounded-full bg-${bg}-500 text-white`}>Submit</div>
         </div>
       </div>
     </div>
