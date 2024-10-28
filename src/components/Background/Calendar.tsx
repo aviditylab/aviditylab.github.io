@@ -2,7 +2,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 export default function () {
     return (
-        <div className="flex flex-col w-80 text-black bg-white drop-shadow-sm p-4 rounded">
+        <div className="flex flex-col w-80 text-black bg-white drop-shadow p-4 rounded">
             <div className=" flex items-center justify-center">
                 <FaChevronLeft />
                 <div className="flex-1 font-bold text-center">

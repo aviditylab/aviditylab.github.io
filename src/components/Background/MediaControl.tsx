@@ -1,7 +1,7 @@
 import { FaPlay } from "react-icons/fa";
 export default function () {
     return (
-        <div className=" flex w-1/2 p-4 rounded-xl drop-shadow-sm bg-white gap-2">
+        <div className=" flex w-3/4 p-4 rounded-xl drop-shadow bg-white gap-2">
             <div className=" flex justify-center items-center p-1 bg-gray-200 rounded-full"><FaPlay color="black" /></div>
             <div className=" flex flex-1 justify-center items-center">
                 <div className="bg-gray-200 w-full h-2 rounded-full">

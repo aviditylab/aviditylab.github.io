@@ -3,7 +3,7 @@ import { PiMountainsFill } from "react-icons/pi";
 
 export default function () {
     return (
-        <div className="flex justify-stretch text-black">
+        <div className="flex justify-stretch text-black bg-white drop-shadow rounded-xl overflow-hidden">
             <div className=" w-52  h-full bg-gray-400 flex justify-center items-center">
                 <PiMountainsFill />
             </div>

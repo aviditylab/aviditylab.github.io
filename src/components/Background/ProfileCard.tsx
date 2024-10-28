@@ -19,8 +19,8 @@ function ProfileCard() {
           </div>
         </div>
         <div className=" flex justify-around items-center gap-2 mt-4">
-          <div className=" flex-1 px-4 text-center py-2 text-white bg-black rounded-full">Follow</div>
-          <div className="flex-1 px-4 text-center py-2 bg-white border border-black rounded-full">Chat</div>
+          <div className=" flex-1 px-4 text-center py-2 text-white font-bold bg-black rounded-full">Follow</div>
+          <div className="flex-1 px-4 text-center py-2 bg-white border font-bold border-black rounded-full">Chat</div>
           <div><i className="fi fi-rr-share px-4 py-2 px4"></i></div>
         </div>
       </div>

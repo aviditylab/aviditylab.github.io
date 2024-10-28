@@ -4,7 +4,7 @@ import { FaFileUpload } from "react-icons/fa";
 
 export default function () {
     return (
-        <div className=" text-black bg-white rounded-3xl">
+        <div className=" text-black bg-white rounded-3xl drop-shadow">
             <div className=" flex justify-between  p-8 border-b">
                 <div className="font-bold">
                     Payment Confirmation
