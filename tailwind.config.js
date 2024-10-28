@@ -4,6 +4,17 @@ module.exports = {
     `./src/pages/**/*.{js,jsx,ts,tsx}`,
     `./src/components/**/*.{js,jsx,ts,tsx}`,
   ],
+  safelist: [
+    {
+      pattern: /bg-(red|purple|blue|orange)-(200|300|500|300)/, // You can display all the colors that you need
+    },
+    {
+      pattern: /text-(red|purple|blue|orange)-(500)/, // You can display all the colors that you need
+    },
+    {
+      pattern: /border-(red|purple|blue|orange)-(500)/, // You can display all the colors that you need
+    },
+  ],
   darkMode: "selector",
   theme: {
     extend: {
@@ -29,7 +40,7 @@ module.exports = {
         josefinSans: ["Josefin Sans", "ui-sans-serif", "system-ui"],
         livvic: ["Livvic", "ui-sans-serif", "system-ui"],
         satoshi: ["Satoshi", "ui-sans-serif", "system-ui"],
-        poppins: ['Poppins', 'ui-sans-serif', 'system-ui'],
+        poppins: ["Poppins", "ui-sans-serif", "system-ui"],
       },
     },
   },

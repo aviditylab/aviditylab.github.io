@@ -7,16 +7,9 @@ import PaymentConfirmation from './PaymentConfirmation';
 import Announcement from './Announcement';
 
 const Backgorund = () => {
-  const imageRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!imageRef.current) return;
-    imageRef.current.style.scale = '1';
-    imageRef.current.style.rotate = '-0.04turn';
-    imageRef.current.style.background = 'linier'
-  }, [imageRef])
   return (
-    <div className=' absolute z-0 right-0 top-0'>
-      <div className='flex flex-col gap-4 p-1 z-0' ref={imageRef}>
+    <div className=' absolute z-0 right-0 top-44 scale-90'>
+      <div className='flex flex-col gap-4 p-1 z-0' style={{ rotate: '-0.03turn' }}>
         <div className=' flex'>
           <ProfileCard />
           <CardImage />
@@ -32,7 +25,7 @@ const Backgorund = () => {
           <Announcement />
         </div>
       </div>
-      <div className='z-50 w-full h-full absolute right-0 top-0' style={{ backgroundImage: 'linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));' }}></div>
+      <div className='z-50 w-full h-full absolute right-0 top-0 bg-gradient-to-r dark:from-dark from-light to-transparent' style={{ rotate: '-0.03turn' }}></div>
     </div>
   );
 };

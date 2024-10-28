@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { BgContext } from "../Hero";
+
 function ProfileCard() {
+  const { bg } = useContext(BgContext)
   return (
     <div className="p-4">
       <div className=" px-6 py-2 bg-white text-black cursor-pointer drop-shadow rounded-2xl">
@@ -19,9 +23,9 @@ function ProfileCard() {
           </div>
         </div>
         <div className=" flex justify-around items-center gap-2 mt-4">
-          <div className=" flex-1 px-4 text-center py-2 text-white font-bold bg-black rounded-full">Follow</div>
-          <div className="flex-1 px-4 text-center py-2 bg-white border font-bold border-black rounded-full">Chat</div>
-          <div><i className="fi fi-rr-share px-4 py-2 px4"></i></div>
+          <div className={` flex-1 px-4 text-center py-2 text-white font-bold bg-${bg}-500 rounded-full`}>Follow</div>
+          <div className={`flex-1 px-4 text-center py-2 bg-white text-${bg}-500 border font-bold border-${bg}-500 rounded-full`}>Chat</div>
+          <div><i className={`fi fi-rr-share px-4 py-2 px4 text-${bg}-500`}></i></div>
         </div>
       </div>
     </div>

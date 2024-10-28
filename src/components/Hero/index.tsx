@@ -84,11 +84,11 @@ const Hero = () => {
   return (
     <BgContext.Provider value={{ bg, setBg }}>
       <HeroThemeContext.Provider value={{ heroTheme, setHeroTheme }}><div className=" h-screen relative">
-        <div className="bg-light dark:bg-dark text-black dark:text-white relative">
+        <div className="bg-light dark:bg-dark text-black dark:text-white relative overflow-hidden">
           <div className={`relative  z-10 flex flex-col h-screen mx-10`}>
             <div className=" flex justify-between h-[15vh] items-center">
               <div className=" font-bold">Avidity</div>
-              <div className=" cursor-pointer py-2 px-4 border rounded-full border-black bg-[#F8F9FA] dark:text-black font-semibold hover:bg-gray-200" onClick={handleToWa}>
+              <div className=" cursor-pointer py-2 px-4 border rounded-full border-black bg-[#F8F9FA] dark:border-none dark:text-black font-semibold hover:bg-gray-200" onClick={handleToWa}>
                 Let's talk
               </div>
             </div>
