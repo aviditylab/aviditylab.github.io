@@ -6,7 +6,7 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern: /bg-(red|purple|blue|orange)-(200|300|500|300)/, // You can display all the colors that you need
+      pattern: /bg-(red|purple|blue|orange)-(200|300|500|300|400)/, // You can display all the colors that you need
     },
     {
       pattern: /text-(red|purple|blue|orange)-(500)/, // You can display all the colors that you need
@@ -21,6 +21,8 @@ module.exports = {
       colors: {
         light: "#F8F9FA",
         dark: "#1E1E1E",
+        bgDark: '#343A40',
+        textDark: '#F8F9FA'
       },
       animation: {
         marquee: "marquee 5s linear infinite",

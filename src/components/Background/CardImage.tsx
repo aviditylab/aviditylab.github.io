@@ -6,8 +6,8 @@ import { BgContext } from "../Hero";
 export default function () {
   const { bg } = useContext(BgContext);
   return (
-    <div className="flex justify-stretch text-black bg-white drop-shadow rounded-xl overflow-hidden">
-      <div className=" w-52  h-full bg-gray-400 flex justify-center items-center">
+    <div className="flex justify-stretch text-black bg-white dark:text-textDark dark:bg-bgDark drop-shadow rounded-xl overflow-hidden">
+      <div className=" w-52  h-full bg-gray-400 dark:text-textDark dark:bg-bgDark flex justify-center items-center">
         <PiMountainsFill />
       </div>
       <div className="flex flex-col p-3 w-72 gap-1">

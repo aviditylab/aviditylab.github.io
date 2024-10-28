@@ -7,7 +7,7 @@ import { useContext } from "react";
 export default function () {
   const { bg } = useContext(BgContext);
   return (
-    <div className=" text-black bg-white rounded-3xl drop-shadow">
+    <div className=" text-black bg-white dark:text-textDark dark:bg-bgDark rounded-3xl drop-shadow">
       <div className=" flex justify-between  p-8 border-b">
         <div className="font-bold">
           Payment Confirmation

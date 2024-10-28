@@ -11,7 +11,7 @@ export default function () {
     const { bg } = useContext(BgContext);
     return (
         <div className="flex justify-center">
-            <div className=" flex p-4 gap-12 bg-white text-gray-500 justify-center w-auto rounded-xl">
+            <div className=" flex p-4 gap-12 bg-white text-gray-500 dark:text-textDark dark:bg-bgDark justify-center w-auto rounded-xl">
                 <PiPencilSimpleFill size={20} />
                 <FaBook size={20} />
                 <FaCamera size={20} />

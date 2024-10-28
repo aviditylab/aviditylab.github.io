@@ -4,7 +4,7 @@ import { useContext } from "react";
 export default function () {
     const { bg } = useContext(BgContext);
     return (
-        <div className="flex text-black justify-between w-full bg-white p-4 rounded-lg drop-shadow">
+        <div className="flex text-black justify-between w-full bg-white dark:text-textDark dark:bg-bgDark p-4 rounded-lg drop-shadow">
             <div className=" flex justify-center items-center gap-2">
                 <PiMagicWandLight size={24} />
                 <div className=" font-bold">
