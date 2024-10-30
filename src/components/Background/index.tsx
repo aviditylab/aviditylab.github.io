@@ -9,7 +9,7 @@ import MenuBar from './MenuBar';
 
 const Backgorund = () => {
   return (
-    <div className=' absolute z-0 right-0 top-44 scale-90'>
+    <div className=' absolute z-0 -right-52 lg:right-0 top-10 lg:top-44 scale-50 lg:scale-90'>
       <div className='flex flex-col gap-4 p-1 z-0' style={{ rotate: '-0.03turn' }}>
         <div className=' flex'>
           <ProfileCard />
